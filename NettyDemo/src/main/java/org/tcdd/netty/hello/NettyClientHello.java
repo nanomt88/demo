@@ -29,6 +29,7 @@ public class NettyClientHello {
                 return pipeline;
             }
         });
+
         ChannelFuture channelFuture = bootstrap.connect(new InetSocketAddress("127.0.0.1",8888));
         Channel channel = channelFuture.getChannel();
         System.out.println("client started...");

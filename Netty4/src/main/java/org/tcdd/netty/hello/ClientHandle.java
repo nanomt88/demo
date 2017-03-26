@@ -1,38 +1,33 @@
 package org.tcdd.netty.hello;
 
-import org.jboss.netty.buffer.ChannelBuffer;
-import org.jboss.netty.channel.*;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by ZBOOK-17 on 2017/2/28.
+ *
  */
-public class ClientHandle extends SimpleChannelHandler {
+public class ClientHandle extends SimpleChannelInboundHandler<String> {
+
 
     @Override
-    public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
-//        String msg = (String) e.getMessage();
-        ChannelBuffer buffer = (ChannelBuffer) e.getMessage();
-        String msg = new String(buffer.array());
-        System.out.println("messageReceived:"+msg);
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+        Channel channel = ctx.channel();
+        System.out.println(channel.remoteAddress() + " say:"+ msg);
+        ctx.writeAndFlush("Received your message ! " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " \n");
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e) throws Exception {
-        System.out.println("exceptionCaught");
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
     }
 
     @Override
-    public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
-        System.out.println("channelConnected");
-    }
-
-    @Override
-    public void channelDisconnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
-        System.out.println("channelDisconnected");
-    }
-
-    @Override
-    public void channelClosed(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
-        System.out.println("channelClosed");
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        super.channelActive(ctx);
     }
 }

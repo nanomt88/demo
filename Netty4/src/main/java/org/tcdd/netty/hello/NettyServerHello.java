@@ -9,6 +9,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 
 /**
  * Created by ZBOOK-17 on 2017/2/27.
@@ -33,7 +35,10 @@ public class NettyServerHello {
                     .childHandler(new ChannelInitializer<SocketChannel>() {// (4)
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new ServerHandle());
+                    ch.pipeline().addLast( new StringDecoder())
+                            .addLast(new StringEncoder())
+                            .addLast()
+                            .addLast(new ServerHandle());
                 }
             })
             .option(ChannelOption.SO_BACKLOG, 128)          // (5)
