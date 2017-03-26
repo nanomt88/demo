@@ -24,7 +24,7 @@ public class NettyServerHello {
     public static void main(String[] args) {
         //创建服务器的启动器
         ServerBootstrap bootstrap = new ServerBootstrap();
-        //创建线程池，链接管理的线程池
+        //创建线程池，监听端口
         ExecutorService boss = Executors.newCachedThreadPool();
         //IO传输的连接池
         ExecutorService worker = Executors.newCachedThreadPool();
