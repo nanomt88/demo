@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="org.tcdd" />
+        <module name="org.tcdd (1) (Netty5)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="org.tcdd" target="1.6" />
+      <module name="org.tcdd (1) (Netty5)" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
