@@ -22,6 +22,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="Netty" />
         <module name="org.demo" />
         <module name="org.tcc" />
         <module name="org.tcdd (1) (Netty4)" />
@@ -29,6 +30,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Netty" target="1.5" />
       <module name="org.demo" target="1.6" />
       <module name="org.tcc" target="1.6" />
       <module name="org.tcdd" target="1.6" />

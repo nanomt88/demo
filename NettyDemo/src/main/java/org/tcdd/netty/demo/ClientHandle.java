@@ -1,4 +1,4 @@
-package org.tcdd.netty.demo;
+package netty.demo;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.*;

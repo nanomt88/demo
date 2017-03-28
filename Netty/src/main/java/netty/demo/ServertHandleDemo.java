@@ -1,4 +1,4 @@
-package org.tcdd.netty.demo;
+package netty.demo;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

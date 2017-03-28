@@ -1,4 +1,4 @@
-package org.tcdd.netty.hellowold;
+package netty.hellowold;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;

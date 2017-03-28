@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb5d03d3-79c9-4c88-ba9e-d038bd40f1cc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/ClientDemo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hellowold/DiscardServer.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandle.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHandle.java" afterPath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/ServertHandleDemo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHello.java" afterPath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/NettyServerHello.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ClientHandle.java" afterPath="$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/demo/ClientHandle.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/NettyClientHello.java" afterPath="$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/demo/NettyClientHello.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/NettyServerHello.java" afterPath="$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/demo/NettyServerHello.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ServerHandle.java" afterPath="$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/demo/ServerHandle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Netty4/pom.xml" afterPath="$PROJECT_DIR$/Netty4/pom.xml" />
     </list>
     <ignored path="demo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,6 +10,7 @@
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/netty5/target/" />
     <ignored path="$PROJECT_DIR$/Netty4/target/" />
+    <ignored path="$PROJECT_DIR$/Netty/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,60 +28,20 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Netty4/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DiscardServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hellowold/DiscardServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/ClientDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NettyServerHello.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/NettyServerHello.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServertHandleDemo.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/ServertHandleDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NettyDemo/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="24" />
+              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Netty/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -112,6 +61,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Netty4/pom.xml" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/Netty/pom.xml" />
       </list>
     </option>
   </component>
@@ -129,8 +80,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-34" />
-    <option name="y" value="-1177" />
+    <option name="x" value="152" />
+    <option name="y" value="-1124" />
     <option name="width" value="1591" />
     <option name="height" value="1011" />
   </component>
@@ -159,9 +110,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,94 +138,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NettyDemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Netty4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Netty4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="netty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hellowold" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Netty4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="netty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
+              <option name="myItemId" value="Netty" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -719,15 +588,16 @@
       <updated>1488248485323</updated>
       <workItem from="1488248486696" duration="135000" />
       <workItem from="1490619855210" duration="25000" />
+      <workItem from="1490703257536" duration="224000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="491000" />
+    <option name="totallyTimeSpent" value="715000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-34" y="-1177" width="1591" height="1011" extended-state="0" />
-    <editor active="false" />
+    <frame x="152" y="-1124" width="1591" height="1011" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -777,22 +647,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ClientHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ServerHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netty5/Netty5/src/main/java/org/tcdd/netty/hello/NettyClientHello.java" />
-    <entry file="file://$PROJECT_DIR$/netty5/Netty5/src/main/java/org/tcdd/netty/hello/ClientHandle.java" />
     <entry file="file://$PROJECT_DIR$/netty5/pom.xml" />
     <entry file="file://$USER_HOME$/.m2/settings.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -811,30 +665,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHello.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHandle.java" />
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHello.java" />
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandle.java" />
     <entry file="file://$PROJECT_DIR$/Netty4/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -851,54 +684,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHello.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHandle.java" />
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHello.java" />
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandle.java" />
     <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHelloWord.java" />
     <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHelloWord.java" />
     <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandleHelloWord.java" />
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/NettyClientHello.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ClientHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ServerHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/NettyClientHello.java" />
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ClientHandle.java" />
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ServerHandle.java" />
     <entry file="file://$PROJECT_DIR$/netty5/pom.xml" />
     <entry file="file://$USER_HOME$/.m2/settings.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -907,27 +701,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/NettyClientHello.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ClientHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ServerHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/NettyClientHello.java" />
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ClientHandle.java" />
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ServerHandle.java" />
     <entry file="file://$PROJECT_DIR$/NettyDemo/org.tcdd.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -935,13 +711,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/NettyClientHello.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/NettyClientHello.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/io/netty/netty/3.10.6.Final/netty-3.10.6.Final.jar!/org/jboss/netty/channel/SimpleChannelHandler.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
@@ -949,20 +719,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ClientHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ServerHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ClientHandle.java" />
+    <entry file="file://$PROJECT_DIR$/NettyDemo/src/main/java/org/tcdd/netty/hello/ServerHandle.java" />
     <entry file="file://$PROJECT_DIR$/netty5/Netty5/src/main/java/org/tcdd/netty/hello/NettyClientHello.java" />
     <entry file="file://$PROJECT_DIR$/netty5/Netty5/src/main/java/org/tcdd/netty/hello/ClientHandle.java" />
     <entry file="file://$PROJECT_DIR$/netty5/pom.xml" />
@@ -983,38 +741,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHello.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NettyDemo/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHandle.java" />
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHello.java" />
+    <entry file="file://$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandle.java" />
     <entry file="file://$PROJECT_DIR$/Netty4/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1051,6 +780,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Netty4/org.tcdd (1) (Netty4).iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Netty4/org.tcdd (1) (Netty5).iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NettyDemo/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Netty/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="21" />
           <folding />
         </state>
       </provider>

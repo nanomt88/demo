@@ -1,4 +1,4 @@
-package org.tcdd.netty.demo;
+package netty.demo;
 
 
 import org.jboss.netty.bootstrap.ServerBootstrap;
