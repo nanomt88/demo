@@ -26,10 +26,13 @@ public class NettyServerHello {
     }
 
     public void run() throws Exception {
+
         EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
         EventLoopGroup workerGroup = new NioEventLoopGroup();
+
         try {
             ServerBootstrap b = new ServerBootstrap(); // (2)
+
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class) // (3)
                     .childHandler(new ChannelInitializer<SocketChannel>() {// (4)
@@ -37,8 +40,7 @@ public class NettyServerHello {
                 public void initChannel(SocketChannel ch) throws Exception {
                     ch.pipeline().addLast( new StringDecoder())
                             .addLast(new StringEncoder())
-                            .addLast()
-                            .addLast(new ServerHandle());
+                            .addLast(new ServertHandleDemo());
                 }
             })
             .option(ChannelOption.SO_BACKLOG, 128)          // (5)
@@ -46,11 +48,12 @@ public class NettyServerHello {
 
             // Bind and start to accept incoming connections.
             ChannelFuture f = b.bind(port).sync(); // (7)
-
+            System.out.println("Server started...");
             // Wait until the server socket is closed.
             // In this example, this does not happen, but you can do that to gracefully
             // shut down your server.
             f.channel().closeFuture().sync();
+
         } finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();

@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by ZBOOK-17 on 2017/2/28.
  *
  */
-public class ClientHandle extends SimpleChannelInboundHandler<String> {
+public class ServertHandleDemo extends SimpleChannelInboundHandler<String> {
 
 
     @Override
@@ -26,8 +26,14 @@ public class ClientHandle extends SimpleChannelInboundHandler<String> {
         super.exceptionCaught(ctx, cause);
     }
 
+    /**
+     * 当有服务端连接进来的时候执行
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Server channelActive...");
         super.channelActive(ctx);
     }
 }
