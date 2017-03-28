@@ -24,7 +24,6 @@
         <processorPath useClasspath="true" />
         <module name="org.demo" />
         <module name="org.tcc" />
-        <module name="org.tcdd" />
         <module name="org.tcdd (1) (Netty4)" />
         <module name="org.tcdd (1) (Netty5)" />
       </profile>

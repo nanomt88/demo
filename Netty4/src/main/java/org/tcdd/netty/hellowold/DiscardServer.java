@@ -50,7 +50,7 @@ public class DiscardServer {
     private static class DiscardServerHandle extends ChannelInboundHandlerAdapter  {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            super.channelRead(ctx, msg);
+
         }
     }
 }

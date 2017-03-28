@@ -4,8 +4,6 @@
     <list default="true" id="eb5d03d3-79c9-4c88-ba9e-d038bd40f1cc" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/ClientDemo.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hellowold/DiscardServer.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Netty4/org.tcc.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Netty4/org.tcdd (1) (Netty5).iml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ServerHandle.java" afterPath="" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/ClientHandle.java" afterPath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/ServertHandleDemo.java" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/hello/NettyServerHello.java" afterPath="$PROJECT_DIR$/Netty4/src/main/java/org/tcdd/netty/demo/NettyServerHello.java" />
