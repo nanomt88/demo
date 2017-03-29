@@ -6,6 +6,11 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by ZBOOK-17 on 2017/3/29.
@@ -20,10 +25,13 @@ public class TimeServer {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(boss,worker)
                 .channel(NioServerSocketChannel.class)
-                .handler(new ChannelInitializer<SocketChannel>() {
+                .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel channel) throws Exception {
-                        channel.pipeline().addLast(new TimeServerHandle());
+                        channel.pipeline()
+                                .addLast(new StringEncoder())
+                                .addLast(new StringDecoder())
+                                .addLast(new TimeServerHandle());
                     }
                 })
                 .option(ChannelOption.SO_BACKLOG, 128 )
@@ -50,8 +58,8 @@ public class TimeServer {
         @Override
         public void channelActive(final ChannelHandlerContext ctx) throws Exception {
 
-            ByteBuf buffer = ctx.alloc().buffer();
-            buffer.writeLong(System.currentTimeMillis());
+            ByteBuf buffer = ctx.alloc().buffer(4);
+            buffer.writeInt((int) (System.currentTimeMillis() / 1000L + 2208988800L));
 
             final ChannelFuture future = ctx.writeAndFlush(buffer);
             future.addListener( new ChannelFutureListener() {
@@ -61,6 +69,7 @@ public class TimeServer {
                     ctx.close();
                 }
             });
+
         }
 
         @Override
