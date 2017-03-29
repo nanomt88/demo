@@ -64,7 +64,14 @@ public class DiscardServer {
             //((ByteBuf)msg).release();
             //或者
             try {
-                System.out.println("Release message:"+ msg);
+                ByteBuf in =((ByteBuf)msg);
+
+                while (in.isReadable()){
+                    System.out.print((char) in.readByte());
+                    System.out.flush();
+                }
+
+                //System.out.println("Release message:"+ msg);
             } finally {
                 ReferenceCountUtil.release(msg);
             }
