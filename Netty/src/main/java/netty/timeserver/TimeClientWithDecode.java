@@ -6,18 +6,15 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.codec.ByteToMessageDecoder;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ZBOOK-17 on 2017/3/29.
  */
-public class TimeClient {
+public class TimeClientWithDecode {
 
     public static void main(String[] args) {
         EventLoopGroup group = new NioEventLoopGroup();
@@ -29,7 +26,7 @@ public class TimeClient {
             @Override
             protected void initChannel(SocketChannel socketChannel) throws Exception {
                 socketChannel.pipeline()
-                        .addLast(new TimeClientHandle2());
+                        .addLast(new TimeEncode(), new TimeClientHandle());
             }
         });
 
@@ -49,7 +46,6 @@ public class TimeClient {
             try {
                 long time = buf.readUnsignedInt();
                 System.out.println(time);
-                //计算出当前时间的毫秒数
                 long currentTimeMillis = (time - 2208988800L) * 1000L;
                 System.out.println("==========>" + new Date(currentTimeMillis));
                 ctx.close();
@@ -68,30 +64,18 @@ public class TimeClient {
     }
 
     /**
-     * 继承 SimpleChannelInboundHandler 类，会自动释放bytebuf中的信息
+     * 自定义转码 类，负责超过4个字符的时候，进行传输
      */
-    private static class TimeClientHandle2 extends SimpleChannelInboundHandler {
+    static class TimeEncode extends ByteToMessageDecoder {
+
         @Override
-        public void channelRead0(ChannelHandlerContext ctx, Object s) throws Exception {
-            //System.out.println("server send msg:"+ s);
-            ByteBuf buf = (ByteBuf) s;
-            try {
-                long time = buf.readUnsignedInt();
-                System.out.println(time);
-                long currentTimeMillis = (time - 2208988800L) * 1000L;
-                System.out.println("==========>" + new Date(currentTimeMillis));
-                ctx.close();
-            }finally {
-                //buf.release();
+        protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
+            //小于四个字节 则不读取
+            if(byteBuf.readableBytes()<4){
+                return;
             }
-
-        }
-
-        @Override
-        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-            System.out.println("error.....");
-            cause.printStackTrace();
-            ctx.close();
+            //长度够四个字节则读取
+            list.add(byteBuf.readBytes(4));
         }
     }
 }

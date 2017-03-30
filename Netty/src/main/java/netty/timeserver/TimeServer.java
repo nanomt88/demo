@@ -59,6 +59,7 @@ public class TimeServer {
         public void channelActive(final ChannelHandlerContext ctx) throws Exception {
 
             ByteBuf buffer = ctx.alloc().buffer(4);
+            //这里要加2208988800，是因为获得到的时间是格林尼治时间，所以要变成东八区的时间，否则会与与北京时间有8小时的时差
             buffer.writeInt((int) (System.currentTimeMillis() / 1000L + 2208988800L));
 
             final ChannelFuture future = ctx.writeAndFlush(buffer);
@@ -74,6 +75,7 @@ public class TimeServer {
 
         @Override
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+            System.out.println("error-----------------");
             cause.printStackTrace();
             ctx.close();
         }
