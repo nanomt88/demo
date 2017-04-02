@@ -38,7 +38,7 @@ public class TimeClient {
     /**
      *  继承 ChannelInboundHandlerAdapter 类，需要自己手工释放 ByteBuf
      */
-    private static class TimeClientHandle extends ChannelInboundHandlerAdapter {
+    static class TimeClientHandle extends ChannelInboundHandlerAdapter {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object s) throws Exception {
             //System.out.println("server send msg:"+ s);
@@ -48,7 +48,7 @@ public class TimeClient {
         }
 
         @Override
-        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        public  void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
             System.out.println("error.....");
             cause.printStackTrace();
             ctx.close();
