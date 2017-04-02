@@ -8,6 +8,7 @@ import java.util.concurrent.CountDownLatch;
  * @Author: hongxudong@lxfintech.com
  * @Created: 2017/4/2 下午4:13
  * @Description:    使用CountDownLatch 工具类进行线程直接通信
+ *                优点：不会像notify()方法一样，等到线程执行完成之后才能释放锁，让其他线程执行。
  */
 
 public class ThreadNotifyByCountDownLatch {
