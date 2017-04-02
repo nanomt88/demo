@@ -1,4 +1,4 @@
-package com.demo.sync;
+package com.demo.volatiles;
 
 /**
  * 程序运行会进入死循环，为什么呢？
@@ -6,9 +6,12 @@ package com.demo.sync;
  *  当主内存中的变量值修改之后，thread内部是看不到的，读取的还是thread内部
  *  变量的副本
  */
-public class ThreadRunTest extends Thread{
+public class VolatileRunTest extends Thread{
 
     public boolean isRunning = true;
+
+//    使用volatile关键字修饰之后，就可以保证修改完isRunning值之后，其他的变量都可以看到。
+//    public volatile boolean isRunning = true;
 
 
     @Override
@@ -21,7 +24,7 @@ public class ThreadRunTest extends Thread{
     }
 
     public static void main(String[] args) throws InterruptedException {
-        ThreadRunTest runTest = new ThreadRunTest();
+        VolatileRunTest runTest = new VolatileRunTest();
         runTest.start();
         Thread.currentThread().sleep(1000);
         runTest.isRunning = (false);
