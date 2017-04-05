@@ -2,7 +2,7 @@ package com.demo.future;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/4 ÉÏÎç9:30
+ * @Created: 2017/4/4 ä¸Šåˆ9:30
  * @Description: //TODO
  */
 
@@ -14,16 +14,16 @@ public class FutureCall implements Callable<String> {
 
     @Override
     public synchronized String call() throws InterruptedException {
-        //Èç¹ûÃ»ÓĞÍê³ÉÈÎÎñ£¬Ôò¶ÂÈû
+        //å¦‚æœæ²¡æœ‰å®Œæˆä»»åŠ¡ï¼Œåˆ™å µå¡
         if(!isDone){
             wait();
         }
-        //Íê³ÉÖ®ºó£¬Ôò·µ»ØÕæÊµµÄ½á¹û
+        //å®Œæˆä¹‹åï¼Œåˆ™è¿”å›çœŸå®çš„ç»“æœ
         return request.call();
     }
 
     /**
-     * ÈÎÎñÖ´ĞĞÍê³ÉÖ®ºó£¬ĞèÒª½«½á¹û·µ»Ø
+     * ä»»åŠ¡æ‰§è¡Œå®Œæˆä¹‹åï¼Œéœ€è¦å°†ç»“æœè¿”å›
      * @param result
      */
     public synchronized void setResult(RealCall result) {
@@ -32,7 +32,7 @@ public class FutureCall implements Callable<String> {
         }
         this.request = result;
         isDone = true;
-        //ÄÃµ½½á¹ûÖ®ºó£¬»½ĞÑËùÓĞÔÙµÈ´ıµÄÏß³Ì
+        //æ‹¿åˆ°ç»“æœä¹‹åï¼Œå”¤é†’æ‰€æœ‰å†ç­‰å¾…çš„çº¿ç¨‹
         notifyAll();
     }
 

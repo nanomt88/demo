@@ -2,23 +2,23 @@ package com.demo.future;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/4 ÉÏÎç9:11
- * @Description:   ¿Í»§¶Ë£¬ÓÃÀ´°ü×°futureÄ£Ê½µÄÀà
+ * @Created: 2017/4/4 ä¸Šåˆ9:11
+ * @Description:   å®¢æˆ·ç«¯ï¼Œç”¨æ¥åŒ…è£…futureæ¨¡å¼çš„ç±»
  */
 
 public class Client {
 
     public Callable request(final TaskMsg msg){
 
-        //Ö±½Ó·µ»ØÒ»¸ö¿ÕµÄ°ü×°Àà£¬Õâ¸öÀà²»Ìá¹©ÈÎÎñÊµÏÖ£¬¾ßÌåµÄÒµÎñÂß¼­ÔÚÏß³ÌÖĞ¿ªÆô
+        //ç›´æ¥è¿”å›ä¸€ä¸ªç©ºçš„åŒ…è£…ç±»ï¼Œè¿™ä¸ªç±»ä¸æä¾›ä»»åŠ¡å®ç°ï¼Œå…·ä½“çš„ä¸šåŠ¡é€»è¾‘åœ¨çº¿ç¨‹ä¸­å¼€å¯
         final FutureCall futureRequest = new FutureCall();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                //´´½¨ÕæÊµµÄÈÎÎñÀà
+                //åˆ›å»ºçœŸå®çš„ä»»åŠ¡ç±»
                 RealCall realRequest = new RealCall(msg);
-                //ÉèÖÃ·µ»ØµÄ½á¹ûµ½½á¹ûÖĞ
+                //è®¾ç½®è¿”å›çš„ç»“æœåˆ°ç»“æœä¸­
                 futureRequest.setResult(realRequest);
             }
         }).start();

@@ -5,8 +5,8 @@ import java.util.concurrent.Callable;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/4 ÏÂÎç2:19
- * @Description: Ê¹ÓÃ jdk×Ô´øµÄFuture ÊµÏÖfutureÄ£Ê½
+ * @Created: 2017/4/4 ä¸‹åˆ2:19
+ * @Description: ä½¿ç”¨ jdkè‡ªå¸¦çš„Future å®ç°futureæ¨¡å¼
  */
 
 public class FutureExample {
@@ -15,17 +15,17 @@ public class FutureExample {
         FutureTask<String> task = new FutureTask(new Callable<String>() {
             @Override
             public String call() throws Exception {
-                //Ä£ÄâÕæÊµµÄÒµÎñÖ´ĞĞºÄÊ±²Ù×÷
+                //æ¨¡æ‹ŸçœŸå®çš„ä¸šåŠ¡æ‰§è¡Œè€—æ—¶æ“ä½œ
                 Thread.currentThread().sleep(2000);
 
-                return "°¥Ñ½ÂèÑ½£¬¹¤×÷ÍêÁË...";
+                return "å“å‘€å¦ˆå‘€ï¼Œå·¥ä½œå®Œäº†...";
             }
         });
         ExecutorService threadPool = Executors.newFixedThreadPool(1);
         threadPool.submit(task);
 
         Thread.sleep(1500);
-        System.out.println("ÆäËû¹¤×÷ÍêÁË£¬µÈ´ıÈÎÎñ·µ»Ø½á¹û...");
+        System.out.println("å…¶ä»–å·¥ä½œå®Œäº†ï¼Œç­‰å¾…ä»»åŠ¡è¿”å›ç»“æœ...");
         System.out.println(task.get());
         threadPool.shutdown();
     }

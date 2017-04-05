@@ -2,7 +2,7 @@ package com.demo.future;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/4 上午10:37
+ * @Created: 2017/4/4 涓婂崍10:37
  * @Description: //TODO
  */
 
@@ -12,12 +12,12 @@ public class RealCall implements Callable<String> {
 
     public RealCall(TaskMsg task){
         try {
-            //模拟执行真正业务流程 消耗的时间
+            //妯℃嫙鎵ц鐪熸涓氬姟娴佺▼ 娑堣�楃殑鏃堕棿
             Thread.currentThread().sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //返回结果
+        //杩斿洖缁撴灉
         result = task.getId()+ " : " +task.getName() + " : " +task.getPrice();
     }
 
