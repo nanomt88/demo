@@ -6,9 +6,9 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/2 ÏÂÎç4:13
- * @Description:    Ê¹ÓÃCountDownLatch ¹¤¾ßÀà½øĞĞÏß³ÌÖ±½ÓÍ¨ĞÅ
- *                ÓÅµã£º²»»áÏñnotify()·½·¨Ò»Ñù£¬µÈµ½Ïß³ÌÖ´ĞĞÍê³ÉÖ®ºó²ÅÄÜÊÍ·ÅËø£¬ÈÃÆäËûÏß³ÌÖ´ĞĞ¡£
+ * @Created: 2017/4/2 ä¸‹åˆ4:13
+ * @Description:    ä½¿ç”¨CountDownLatch å·¥å…·ç±»è¿›è¡Œçº¿ç¨‹ç›´æ¥é€šä¿¡
+ *                ä¼˜ç‚¹ï¼šä¸ä¼šåƒnotify()æ–¹æ³•ä¸€æ ·ï¼Œç­‰åˆ°çº¿ç¨‹æ‰§è¡Œå®Œæˆä¹‹åæ‰èƒ½é‡Šæ”¾é”ï¼Œè®©å…¶ä»–çº¿ç¨‹æ‰§è¡Œã€‚
  */
 
 public class ThreadNotifyByCountDownLatch {
@@ -24,7 +24,7 @@ public class ThreadNotifyByCountDownLatch {
     }
 
     public static void main(String[] args) {
-        //Ïß³ÌÍ¨ĞÅ
+        //çº¿ç¨‹é€šä¿¡
         final CountDownLatch latch = new CountDownLatch(1);
 
         final ThreadNotifyByWhile obj = new ThreadNotifyByWhile();
@@ -42,10 +42,10 @@ public class ThreadNotifyByCountDownLatch {
                     }
 
                     obj.add();
-                    System.out.println("µ±Ç°Ïß³Ì " + Thread.currentThread().getName() + " Ìí¼ÓĞÂµÄÔªËØ" + i);
+                    System.out.println("å½“å‰çº¿ç¨‹ " + Thread.currentThread().getName() + " æ·»åŠ æ–°çš„å…ƒç´ " + i);
 
                     if(i==5){
-                        //µ÷ÓÃcountDownÖ®ºó£¬ÁíÍâ¶ÂÈûµÄÏß³Ì»áÁ¢Âí»½ĞÑ
+                        //è°ƒç”¨countDownä¹‹åï¼Œå¦å¤–å µå¡çš„çº¿ç¨‹ä¼šç«‹é©¬å”¤é†’
                         latch.countDown();
                     }
 
@@ -60,14 +60,14 @@ public class ThreadNotifyByCountDownLatch {
 
                     try {
 
-                        //CountDownLatch.await()·½·¨»á¶ÂÈû£¬µÈµ½ÆäËûÏß³Ìµ÷ÓÃcountDownÍê±ÏÖ®ºó²Å»áÖ´ĞĞ
+                        //CountDownLatch.await()æ–¹æ³•ä¼šå µå¡ï¼Œç­‰åˆ°å…¶ä»–çº¿ç¨‹è°ƒç”¨countDownå®Œæ¯•ä¹‹åæ‰ä¼šæ‰§è¡Œ
                         latch.await();
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
-                    System.out.println("µ±Ç°Ïß³Ì "+Thread.currentThread().getName() +" ½ÓÊÕµ½ĞÅÏ¢");
+                    System.out.println("å½“å‰çº¿ç¨‹ "+Thread.currentThread().getName() +" æ¥æ”¶åˆ°ä¿¡æ¯");
                     throw new RuntimeException();
                 }
             }

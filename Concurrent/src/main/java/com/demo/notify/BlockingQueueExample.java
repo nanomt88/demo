@@ -5,20 +5,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/2 ÏÂÎç4:27
- * @Description:  ×Ô¼ºĞ´Ò»¸ö¼òµ¥µÄ LinkedBlockingQueue Ğ¡Àı×Ó
+ * @Created: 2017/4/2 ä¸‹åˆ4:27
+ * @Description:  è‡ªå·±å†™ä¸€ä¸ªç®€å•çš„ LinkedBlockingQueue å°ä¾‹å­
  */
 
 public class BlockingQueueExample  {
     /**
-     * ¶ÓÁĞÁ´±í
+     * é˜Ÿåˆ—é“¾è¡¨
      */
     private LinkedList<Object> list = new LinkedList<>();
-    //Ëø
+    //é”
     private Object lock = new Object();
-    //´óĞ¡
+    //å¤§å°
     private final AtomicInteger size = new AtomicInteger();
-    //¶ÓÁĞ×î´óÖµ
+    //é˜Ÿåˆ—æœ€å¤§å€¼
     private int maxSize = 16;
 
     public BlockingQueueExample(){  }
@@ -29,7 +29,7 @@ public class BlockingQueueExample  {
 
     public void putTask(Object object){
         synchronized (lock) {
-            //Èç¹û³¤¶È³¬¹ı×î´óÖµ£¬Ôò¶ÂÈû£¬Ö±µ½ÓĞÔªËØ±»ÒÆ³ıÎªÖ¹
+            //å¦‚æœé•¿åº¦è¶…è¿‡æœ€å¤§å€¼ï¼Œåˆ™å µå¡ï¼Œç›´åˆ°æœ‰å…ƒç´ è¢«ç§»é™¤ä¸ºæ­¢
             while(size.get() >= maxSize){
                 try {
                     lock.wait();
@@ -38,18 +38,18 @@ public class BlockingQueueExample  {
                 }
                 //throw new RuntimeException("Task refused by max limit");
             }
-            //Ìí¼ÓÈÎÎñ
+            //æ·»åŠ ä»»åŠ¡
             list.add(object);
-            //¼ÆÊıÆ÷¼Ó1
+            //è®¡æ•°å™¨åŠ 1
             size.incrementAndGet();
-            //Ìí¼ÓÈÎÎñÍê³ÉÖ®ºó£¬ĞèÒªÍ¨ÖªËùÓĞµÄÏß³Ì
+            //æ·»åŠ ä»»åŠ¡å®Œæˆä¹‹åï¼Œéœ€è¦é€šçŸ¥æ‰€æœ‰çš„çº¿ç¨‹
             lock.notifyAll();
         }
     }
 
     public Object popTask(){
         synchronized (lock){
-            //Èç¹û³¤¶ÈÎª¿Õ£¬Ôò¶ÂÈû£¬Ö±µ½ÓĞÔªËØ±»Ìí¼Ó½øÀ´ÎªÖ¹
+            //å¦‚æœé•¿åº¦ä¸ºç©ºï¼Œåˆ™å µå¡ï¼Œç›´åˆ°æœ‰å…ƒç´ è¢«æ·»åŠ è¿›æ¥ä¸ºæ­¢
             while (size.get() == 0){
                 try {
                     lock.wait();
@@ -79,11 +79,11 @@ public class BlockingQueueExample  {
             @Override
             public void run() {
                 queue.putTask("a");
-                System.out.println(Thread.currentThread().getName()+" ·ÅÈëÔªËØ£ºa");
+                System.out.println(Thread.currentThread().getName()+" æ”¾å…¥å…ƒç´ ï¼ša");
                 queue.putTask("b");
-                System.out.println(Thread.currentThread().getName()+" ·ÅÈëÔªËØ£ºb");
+                System.out.println(Thread.currentThread().getName()+" æ”¾å…¥å…ƒç´ ï¼šb");
                 queue.putTask("c");
-                System.out.println(Thread.currentThread().getName()+" ·ÅÈëÔªËØ£ºc");
+                System.out.println(Thread.currentThread().getName()+" æ”¾å…¥å…ƒç´ ï¼šc");
             }
         });
         s.start();
@@ -98,9 +98,9 @@ public class BlockingQueueExample  {
             @Override
             public void run() {
                 Object a = queue.popTask();
-                System.out.println(Thread.currentThread().getName()+" È¡³öÔªËØ£º"+a);
+                System.out.println(Thread.currentThread().getName()+" å–å‡ºå…ƒç´ ï¼š"+a);
                 Object a2 = queue.popTask();
-                System.out.println(Thread.currentThread().getName()+" È¡³öÔªËØ£º"+a2);
+                System.out.println(Thread.currentThread().getName()+" å–å‡ºå…ƒç´ ï¼š"+a2);
             }
         });
 
@@ -108,11 +108,11 @@ public class BlockingQueueExample  {
             @Override
             public void run() {
                 queue.putTask("m");
-                System.out.println(Thread.currentThread().getName()+" ·ÅÈëÔªËØ£ºm");
+                System.out.println(Thread.currentThread().getName()+" æ”¾å…¥å…ƒç´ ï¼šm");
                 queue.putTask("l");
-                System.out.println(Thread.currentThread().getName()+" ·ÅÈëÔªËØ£ºl");
+                System.out.println(Thread.currentThread().getName()+" æ”¾å…¥å…ƒç´ ï¼šl");
                 Object a2 = queue.popTask();
-                System.out.println(Thread.currentThread().getName()+" È¡³öÔªËØ£º"+a2);
+                System.out.println(Thread.currentThread().getName()+" å–å‡ºå…ƒç´ ï¼š"+a2);
             }
         });
 

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/4 ÏÂÎç3:05
+ * @Created: 2017/4/4 ä¸‹åˆ3:05
  * @Description: //TODO
  */
 
@@ -29,21 +29,21 @@ public class ProviderExample implements Runnable{
             Random random = new Random();
 
             try {
-                //Ä£Äâ ÒµÎñÖ´ĞĞÊ±¼ä
+                //æ¨¡æ‹Ÿ ä¸šåŠ¡æ‰§è¡Œæ—¶é—´
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             Data data = new Data();
             data.setId(random.nextInt(10000));
-            data.setName("ÈÎÎñ"+data.getId());
+            data.setName("ä»»åŠ¡"+data.getId());
 
             try {
-                System.out.println(Thread.currentThread().getName()+" Ìí¼ÓÈÎÎñ£º"+data);
+                System.out.println(Thread.currentThread().getName()+" æ·»åŠ ä»»åŠ¡ï¼š"+data);
                 blockingQueue.offer(data,2, TimeUnit.SECONDS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                System.out.println("Ìí¼ÓÈÎÎñÊ§°Ü°¡°¡°¡..." + data) ;
+                System.out.println("æ·»åŠ ä»»åŠ¡å¤±è´¥å•Šå•Šå•Š..." + data) ;
             }
         }
 

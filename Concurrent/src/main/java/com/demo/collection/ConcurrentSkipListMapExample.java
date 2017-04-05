@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/5 ÏÂÎç6:19
+ * @Created: 2017/4/5 ä¸‹åˆ6:19
  * @Description: //TODO
  */
 
@@ -19,14 +19,14 @@ public class ConcurrentSkipListMapExample {
         map.put("2","222");
         map.put("1","111");
         map.put("5","5555");
-        //Ô­Ê¼Ë³Ğò
+        //åŸå§‹é¡ºåº
         for(Iterator<String> iterator = map.descendingKeySet().iterator(); iterator.hasNext();){
             String key = iterator.next();
 
             System.out.println(" KEY ["+key+"]  VALUE ["+ map.get(key) +"]");
 
         }
-        //ÅÅĞòÖ®ºóµÄË³Ğò
+        //æ’åºä¹‹åçš„é¡ºåº
         for(Iterator<String> iterator = map.keySet().iterator(); iterator.hasNext();){
             String key = iterator.next();
 

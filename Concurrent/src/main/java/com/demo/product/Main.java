@@ -7,20 +7,20 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/4 ÏÂÎç3:05
+ * @Created: 2017/4/4 ä¸‹åˆ3:05
  * @Description: //TODO
  */
 
 public class Main {
 
     public static void main(String[] args) {
-        //ĞÂ½¨Ò»¸öÎŞ½ç¶ÓÁĞ
+        //æ–°å»ºä¸€ä¸ªæ— ç•Œé˜Ÿåˆ—
         BlockingQueue<Data> queue = new LinkedBlockingDeque<>();
-        //´´½¨Éú²úÕß
+        //åˆ›å»ºç”Ÿäº§è€…
         ProviderExample p1 = new ProviderExample(queue);
         ProviderExample p2 = new ProviderExample(queue);
         ProviderExample p3 = new ProviderExample(queue);
-        //Ïû·ÑÕß
+        //æ¶ˆè´¹è€…
         ConsumerExample c1 = new ConsumerExample(queue);
         ConsumerExample c2 = new ConsumerExample(queue);
         ConsumerExample c3 = new ConsumerExample(queue);

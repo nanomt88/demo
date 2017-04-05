@@ -2,7 +2,7 @@ package com.demo.thradlocal;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/2 ÏÂÎç5:38
+ * @Created: 2017/4/2 ä¸‹åˆ5:38
  * @Description: //TODO
  */
 
@@ -25,7 +25,7 @@ public class ThreadLocalExample {
             public void run() {
                 example.setName("Name 1");
                 String name = example.getName();
-                System.out.println(Thread.currentThread().getName()+" »ñÈ¡Ãû³Æ£º"+name);
+                System.out.println(Thread.currentThread().getName()+" è·å–åç§°ï¼š"+name);
             }
         });
         s.start();
@@ -38,7 +38,7 @@ public class ThreadLocalExample {
             @Override
             public void run() {
                 String name = example.getName();
-                System.out.println(Thread.currentThread().getName()+" »ñÈ¡Ãû³Æ£º"+name);
+                System.out.println(Thread.currentThread().getName()+" è·å–åç§°ï¼š"+name);
             }
         });
         s2.start();

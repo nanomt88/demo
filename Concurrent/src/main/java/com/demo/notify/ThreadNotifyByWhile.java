@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/2 ÏÂÎç3:51
+ * @Created: 2017/4/2 ä¸‹åˆ3:51
  * @Description: //TODO
  */
 
@@ -37,7 +37,7 @@ public class ThreadNotifyByWhile {
                     }
 
                     obj.add();
-                    System.out.println("µ±Ç°Ïß³Ì "+Thread.currentThread().getName() +" Ìí¼ÓĞÂµÄÔªËØ"+i);
+                    System.out.println("å½“å‰çº¿ç¨‹ "+Thread.currentThread().getName() +" æ·»åŠ æ–°çš„å…ƒç´ "+i);
                 }
             }
         });
@@ -47,7 +47,7 @@ public class ThreadNotifyByWhile {
             public void run() {
                 while (true) {
                     if (obj.size() == 5) {
-                        System.out.println("µ±Ç°Ïß³Ì "+Thread.currentThread().getName() +" ½ÓÊÕµ½ĞÅÏ¢");
+                        System.out.println("å½“å‰çº¿ç¨‹ "+Thread.currentThread().getName() +" æ¥æ”¶åˆ°ä¿¡æ¯");
                         throw new RuntimeException();
                     }
                 }

@@ -6,7 +6,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/2 ÏÂÎç10:14
+ * @Created: 2017/4/2 ä¸‹åˆ10:14
  * @Description: //TODO
  */
 
@@ -54,8 +54,8 @@ public class PriorityQueueExample implements Comparable<PriorityQueueExample>{
         queue.offer(p2);
         queue.offer(p3);
         queue.offer(p4);
-        //Ìí¼ÓÍê³ÉÖ®ºó£¬ÊÇ²»»á°´ÕÕ´óĞ¡ÖØĞÂÅÅÁĞµÄ
-        //Ö»ÓĞÔÙÈ¡Êı¾İµÄÊ±ºò²Å»áÖØĞÂÅÅÁĞ£¬·µ»Ø×îĞ¡µÄÖµ
+        //æ·»åŠ å®Œæˆä¹‹åï¼Œæ˜¯ä¸ä¼šæŒ‰ç…§å¤§å°é‡æ–°æ’åˆ—çš„
+        //åªæœ‰å†å–æ•°æ®çš„æ—¶å€™æ‰ä¼šé‡æ–°æ’åˆ—ï¼Œè¿”å›æœ€å°çš„å€¼
         System.out.println(queue.take().getId());
         System.out.println(queue.take().getId());
         System.out.println(queue.take().getId());

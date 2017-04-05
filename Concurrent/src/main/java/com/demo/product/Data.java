@@ -2,7 +2,7 @@ package com.demo.product;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/4 ÏÂÎç3:08
+ * @Created: 2017/4/4 ä¸‹åˆ3:08
  * @Description: //TODO
  */
 

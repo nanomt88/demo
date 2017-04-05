@@ -4,7 +4,7 @@ import java.util.concurrent.BlockingQueue;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/4 ÏÂÎç3:06
+ * @Created: 2017/4/4 ä¸‹åˆ3:06
  * @Description: //TODO
  */
 
@@ -24,7 +24,7 @@ public class ConsumerExample implements Runnable{
             try {
                 Data data = blockingQueue.take();
                 Thread.sleep(500);
-                System.out.println(Thread.currentThread().getName() + " Ö´ĞĞÈÎÎñ£º" + data);
+                System.out.println(Thread.currentThread().getName() + " æ‰§è¡Œä»»åŠ¡ï¼š" + data);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

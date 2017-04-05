@@ -5,9 +5,9 @@ import java.util.List;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/2 ÏÂÎç4:06
- * @Description: µ±µ÷ÓÃ Object.wait()·½·¨µÄÊ±ºò£¬»áÊÍ·Åµ±Ç°µÄËø£»µ÷ÓÃObject.notify()²¢²»»áÊÍ·Åµ±Ç°µÄËø
- *  µÈµ½µ±Ç°Ïß³ÌÖ´ĞĞÍê±Ïºó²Å»áÊÍ·ÅËø
+ * @Created: 2017/4/2 ä¸‹åˆ4:06
+ * @Description: å½“è°ƒç”¨ Object.wait()æ–¹æ³•çš„æ—¶å€™ï¼Œä¼šé‡Šæ”¾å½“å‰çš„é”ï¼›è°ƒç”¨Object.notify()å¹¶ä¸ä¼šé‡Šæ”¾å½“å‰çš„é”
+ *  ç­‰åˆ°å½“å‰çº¿ç¨‹æ‰§è¡Œå®Œæ¯•åæ‰ä¼šé‡Šæ”¾é”
  */
 
 public class ThreadNotifyByLock {
@@ -41,10 +41,10 @@ public class ThreadNotifyByLock {
                     }
 
                     obj.add();
-                    System.out.println("µ±Ç°Ïß³Ì " + Thread.currentThread().getName() + " Ìí¼ÓĞÂµÄÔªËØ" + i);
+                    System.out.println("å½“å‰çº¿ç¨‹ " + Thread.currentThread().getName() + " æ·»åŠ æ–°çš„å…ƒç´ " + i);
 
                     if(i==5){
-                        //wait »áÊÍ·Åµ±Ç°µÄËø£¬µ«ÊÇnotify²»»áÊÍ·Åµ±Ç°µÄËø
+                        //wait ä¼šé‡Šæ”¾å½“å‰çš„é”ï¼Œä½†æ˜¯notifyä¸ä¼šé‡Šæ”¾å½“å‰çš„é”
                         lock.notify();
                     }
 
@@ -60,13 +60,13 @@ public class ThreadNotifyByLock {
                     if (obj.size() != 5) {
 
                         try {
-                            //wait »áÊÍ·Åµ±Ç°µÄËø£¬µ«ÊÇnotify²»»áÊÍ·Åµ±Ç°µÄËø
+                            //wait ä¼šé‡Šæ”¾å½“å‰çš„é”ï¼Œä½†æ˜¯notifyä¸ä¼šé‡Šæ”¾å½“å‰çš„é”
                             lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
 
-                        System.out.println("µ±Ç°Ïß³Ì "+Thread.currentThread().getName() +" ½ÓÊÕµ½ĞÅÏ¢");
+                        System.out.println("å½“å‰çº¿ç¨‹ "+Thread.currentThread().getName() +" æ¥æ”¶åˆ°ä¿¡æ¯");
                         throw new RuntimeException();
                     }
                 }

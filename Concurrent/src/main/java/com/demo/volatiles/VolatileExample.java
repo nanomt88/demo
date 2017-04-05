@@ -2,9 +2,9 @@ package com.demo.volatiles;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/2 ����11:44
- * @Description:  ʹ��volatile�����εı������ڶ�ȡ��ʱ��ӵ�и��ߵ�����
- *                ���synchronized�ؼ���֮�󣬿��Ա�֤�Ա����޸ĵ�ԭ���ԣ�ʹ�ö���д�ٵĳ���
+ * @Created: 2017/4/2 上午11:44
+ * @Description:  使用volatile的修饰的变量，在读取的时候拥有更高的性能
+ *                配合synchronized关键字之后，可以保证对变量修改的原子性，使用读多写少的场景
  */
 
 public class VolatileExample {
