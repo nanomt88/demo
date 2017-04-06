@@ -7,7 +7,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 /**
  * @Author: hongxudong@lxfintech.com
  * @Created: 2017/4/2 下午10:14
- * @Description: //TODO
+ * @Description:
  */
 
 public class PriorityQueueExample implements Comparable<PriorityQueueExample>{
