@@ -19,7 +19,7 @@ public class SemaphoreExample {
                         semaphore.acquire();
 
                         Thread.sleep(2000);
-                    } catch (Inter ruptedException e) {
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     System.out.println(Thread.currentThread().getName()+" 执行完毕...");

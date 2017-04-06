@@ -2,7 +2,7 @@ package com.demo.sync;
 
 /**
  * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/2 ÉÏÎç10:11
+ * @Created: 2017/4/2 ä¸Šåˆ10:11
  * @Description: //TODO
  */
 
