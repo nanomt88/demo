@@ -1,4 +1,4 @@
-package com.demo.thradlocal;
+package com.demo.threadlocal;
 
 /**
  * @Author: hongxudong@lxfintech.com
