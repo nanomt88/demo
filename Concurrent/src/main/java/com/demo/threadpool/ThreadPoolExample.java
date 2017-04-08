@@ -1,8 +1,6 @@
 package com.demo.threadpool;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.*;
 
 /**
  * @Author: hongxudong@lxfintech.com
@@ -14,10 +12,30 @@ public class ThreadPoolExample {
 
     public static void main(String[] args) {
 
+//        ExecutorService service = Executors.newCachedThreadPool();
+//        Executors.newFixedThreadPool(10);
+//        Executors.newSingleThreadExecutor();
+//        Executors.newScheduledThreadPool(2);
+
+//        ThreadPoolExecutor service = new ThreadPoolExecutor(2,4,
+//                0, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+
         ExecutorService service = Executors.newCachedThreadPool();
+        for (int i = 0; i < 100000; i++) {
+            Thread s = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println(Thread.currentThread().getName()+" running ...");
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            service.execute(s);
+        }
 
-
-        //ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
     }
 
 }
