@@ -8,7 +8,7 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * Created by ZBOOK-17 on 2017/4/11.
+ * 生产者 生产消息
  */
 public class OrderPusher implements Runnable {
 
@@ -28,6 +28,7 @@ public class OrderPusher implements Runnable {
         for (int i = 0; i < LOOP; i++) {
             disruptor.publishEvent(translator);
         }
+        //生产完成之后 发送通知
         latch.countDown();
     }
 }
