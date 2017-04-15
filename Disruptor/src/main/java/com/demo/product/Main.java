@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
 /**
- * Created by ZBOOK-17 on 2017/4/11.
+ * 使用 disruptor 处理复杂逻辑 示例
  */
 public class Main {
 
@@ -45,11 +45,10 @@ public class Main {
 //                ProducerType.SINGLE, new BusySpinWaitStrategy());
 
         //菱形操作
-        //使用disruptor创建消费者组C1、C2
-        // handleEventsWith 并行执行
-        //EventHandlerGroup handlerGroup = disruptor.handleEventsWith(new OrderHandle1(),new OrderHandle2());
-        //声明在C1/C2完事之后执行JMS消息发送操作 ： 也就是流程走到C3
-        //handlerGroup.then(new OrderHandle3());
+        //1. 使用disruptor创建消费者组C1、C2， handleEventsWith 并行执行
+        //2. 声明在C1/C2完事之后执行JMS消息发送操作 ： 也就是流程走到C3
+        EventHandlerGroup handlerGroup = disruptor.handleEventsWith(new OrderHandle1(),new OrderHandle2());
+        handlerGroup.then(new OrderHandle3());
 
         //顺序操作
 //        disruptor.handleEventsWith(new OrderHandle1())
@@ -57,15 +56,15 @@ public class Main {
 //                .handleEventsWith(new OrderHandle3());
 
         //六边形处理
-        OrderHandle1 h1 = new OrderHandle1();
-        OrderHandle2 h2 = new OrderHandle2();
-        OrderHandle3 h3 = new OrderHandle3();
-        OrderHandle4 h4 = new OrderHandle4();
-        OrderHandle5 h5 = new OrderHandle5();
-        disruptor.handleEventsWith(h1,h2);
-        disruptor.after(h1).handleEventsWith(h4);
-        disruptor.after(h2).handleEventsWith(h5);
-        disruptor.after(h4,h5).handleEventsWith(h3);
+//        OrderHandle1 h1 = new OrderHandle1();
+//        OrderHandle2 h2 = new OrderHandle2();
+//        OrderHandle3 h3 = new OrderHandle3();
+//        OrderHandle4 h4 = new OrderHandle4();
+//        OrderHandle5 h5 = new OrderHandle5();
+//        disruptor.handleEventsWith(h1,h2);
+//        disruptor.after(h1).handleEventsWith(h4);
+//        disruptor.after(h2).handleEventsWith(h5);
+//        disruptor.after(h4,h5).handleEventsWith(h3);
 
         //启动
         disruptor.start();
