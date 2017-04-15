@@ -1,10 +1,10 @@
 package com.demo.helloworld;
 
-import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.YieldingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
+import com.lmax.disruptor.util.DaemonThreadFactory;
 
 import java.nio.ByteBuffer;
 import java.util.concurrent.ExecutorService;
@@ -12,15 +12,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
 /**
- * @Author: hongxudong@lxfintech.com
- * @Created: 2017/4/9 上午9:22
- * @Description: //TODO
+ * Created by ZBOOK-17 on 2017/4/11.
  */
+public class LongEventMain2 {
 
-public class LongEventMain {
-    public static void main(String[] args) throws InterruptedException {
-        //创建线程池
-        ExecutorService  executor = Executors.newCachedThreadPool();
+    public static void main(String[] args) {
         //创建工厂
         LongEventFactory factory = new LongEventFactory();
         //设置bufferSize，也就是RingBuffer大小，必须是2的N次方
@@ -36,8 +32,14 @@ public class LongEventMain {
          */
 
         //创建disruptor
-        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>( factory, bufferSize,
-                executor, ProducerType.SINGLE, new YieldingWaitStrategy());
+        //DaemonThreadFactory.INSTANCE
+        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize,
+                new ThreadFactory() {
+                    @Override
+                    public Thread newThread(Runnable r) {
+                        return new Thread(r);
+                    }
+                }, ProducerType.SINGLE, new YieldingWaitStrategy());
         //设置消费者事件监听方法
         disruptor.handleEventsWith(new LongEventConsumer());
         //启动
@@ -59,6 +61,5 @@ public class LongEventMain {
         //关闭 disruptor，方法会堵塞，直至所有的事件都得到处理；
         disruptor.shutdown();
         //关闭 disruptor 使用的线程池；如果需要的话，必须手动关闭， disruptor 在 shutdown 时不会自动关闭
-        executor.shutdown();
     }
 }
