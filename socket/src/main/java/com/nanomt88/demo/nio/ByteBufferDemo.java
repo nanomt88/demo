@@ -12,9 +12,9 @@ public class ByteBufferDemo {
 
     public static void main(String[] args) {
 
-        //m1();
+        m1();
         //m2();
-        m3();
+        //m3();
     }
 
     public static void m1(){
