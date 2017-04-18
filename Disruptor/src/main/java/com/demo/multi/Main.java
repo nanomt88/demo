@@ -53,7 +53,6 @@ public class Main {
                 ex.printStackTrace();
             }
         }, consumers);
-        //TODO 这句话干嘛的啊？？  这个貌似很重要啊？
         // workerPool.getWorkerSequences()： 获取生产者对应的三个sequence
         //addGatingSequences ： 设置生产者根据各自对应的sequence 调节各自对应的速度，维持生产者和消费者的顺序执行
         ringBuffer.addGatingSequences(workerPool.getWorkerSequences());
@@ -84,5 +83,7 @@ public class Main {
         System.out.println("----------程序开始执行-------------");
         Thread.sleep(5000);
         System.out.println("total: " + consumers[0].getCount());
+        workerPool.halt();
+        executorService.shutdown();
     }
 }
