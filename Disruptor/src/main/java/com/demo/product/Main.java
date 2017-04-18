@@ -45,11 +45,10 @@ public class Main {
 //                ProducerType.SINGLE, new BusySpinWaitStrategy());
 
         //菱形操作
-        //使用disruptor创建消费者组C1、C2
-        // handleEventsWith 并行执行
-//        EventHandlerGroup handlerGroup = disruptor.handleEventsWith(new OrderHandle1(),new OrderHandle2());
-//        声明在C1/C2完事之后执行JMS消息发送操作 ： 也就是流程走到C3
-//        handlerGroup.then(new OrderHandle3());
+        //1. 使用disruptor创建消费者组C1、C2， handleEventsWith 并行执行
+        //2. 声明在C1/C2完事之后执行JMS消息发送操作 ： 也就是流程走到C3
+        EventHandlerGroup handlerGroup = disruptor.handleEventsWith(new OrderHandle1(),new OrderHandle2());
+        handlerGroup.then(new OrderHandle3());
 
         //顺序操作
 //        disruptor.handleEventsWith(new OrderHandle1())

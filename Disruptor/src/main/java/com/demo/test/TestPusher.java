@@ -1,4 +1,4 @@
-package com.demo.product;
+package com.demo.test;
 
 import com.demo.generate.Order;
 import com.lmax.disruptor.EventTranslator;
@@ -10,21 +10,21 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 生产者 生产消息
  */
-public class OrderPusher implements Runnable {
+public class TestPusher implements Runnable {
 
     private CountDownLatch latch;
-    Disruptor<Order> disruptor ;
+    Disruptor<TestEvent> disruptor ;
 
-    private static int LOOP = 1;
+    private static int LOOP = 1000;
 
-    public OrderPusher(Disruptor<Order> disruptor, CountDownLatch countDownLatch){
+    public TestPusher(Disruptor<TestEvent> disruptor, CountDownLatch countDownLatch){
         this.disruptor = disruptor;
         this.latch = countDownLatch;
     }
 
     @Override
     public void run() {
-        OrderEventTranslator translator = new OrderEventTranslator();
+        TestEventTranslator translator = new TestEventTranslator();
         for (int i = 0; i < LOOP; i++) {
             disruptor.publishEvent(translator);
         }
@@ -33,12 +33,12 @@ public class OrderPusher implements Runnable {
     }
 }
 
-class OrderEventTranslator implements EventTranslator<Order>{
+class TestEventTranslator implements EventTranslator<TestEvent>{
 
     private Random random = new Random();
 
     @Override
-    public void translateTo(Order event, long sequence) {
+    public void translateTo(TestEvent event, long sequence) {
         event.setPrice(random.nextDouble() * 9999);
     }
 }

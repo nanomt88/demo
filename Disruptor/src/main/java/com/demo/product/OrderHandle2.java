@@ -11,8 +11,8 @@ public class OrderHandle2 implements EventHandler<Order>  {
 
     @Override
     public void onEvent(Order event, long sequence, boolean endOfBatch) throws Exception {
-        System.out.println("OrderHandle2 : set price");
+        System.out.println(Thread.currentThread().getName()+"  OrderHandle2 : set price");
         event.setPrice(100);
-        Thread.sleep(1000);
+        Thread.sleep(5000);
     }
 }
