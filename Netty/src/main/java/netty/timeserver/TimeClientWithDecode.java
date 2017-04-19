@@ -40,6 +40,11 @@ public class TimeClientWithDecode {
      */
     private static class TimeClientHandle extends ChannelInboundHandlerAdapter {
         @Override
+        public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+            super.handlerAdded(ctx);
+        }
+
+        @Override
         public void channelRead(ChannelHandlerContext ctx, Object s) throws Exception {
             //System.out.println("server send msg:"+ s);
             ByteBuf buf = (ByteBuf) s;

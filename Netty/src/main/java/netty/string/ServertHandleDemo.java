@@ -18,7 +18,8 @@ public class ServertHandleDemo extends SimpleChannelInboundHandler<String> {
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         Channel channel = ctx.channel();
         System.out.println(channel.remoteAddress() + " say:"+ msg);
-        ctx.writeAndFlush("Received your message ! " + new SimpleDateFormat("yyyy-MM-.gitignore HH:mm:ss").format(new Date()) + " \n");
+        String ret = "Received your message ! " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " \n";
+        ctx.writeAndFlush(ret);
     }
 
     @Override
