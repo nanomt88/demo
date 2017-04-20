@@ -58,7 +58,10 @@ public class Server {
         }
     }
 
+
     private static class ServerHandle extends SimpleChannelInboundHandler<String> {
+
+        private static final String END_TAG = "$_$";
 
         @Override
         public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -67,14 +70,22 @@ public class Server {
 
         @Override
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-            super.exceptionCaught(ctx, cause);
+            cause.printStackTrace();
+            //关闭连接
             ctx.close();
         }
 
+        /**
+         * SimpleChannelInboundHandler 的channelRead0方法，会自动清空缓存
+         * @param ctx
+         * @param msg
+         * @throws Exception
+         */
         @Override
         protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
             System.out.println("Client say:"+msg);
-            String response = "服务器接受到消息：" + msg + "$_";
+            String response = "服务器接受到消息：" + msg + END_TAG;
+            //回写信息
             ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));
         }
     }
