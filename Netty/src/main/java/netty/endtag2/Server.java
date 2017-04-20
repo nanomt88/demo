@@ -36,7 +36,7 @@ public class Server {
 
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            //设置分隔符
+                            //设置分隔符:为固定五个长度
                             ch.pipeline().addLast(new FixedLengthFrameDecoder(5));
                             //设置字符串解码、编码器
                             ch.pipeline().addLast(new StringDecoder());

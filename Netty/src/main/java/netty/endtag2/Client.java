@@ -28,8 +28,8 @@ public class Client {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            ByteBuf buf = Unpooled.copiedBuffer(END_TAG.getBytes());
                             ChannelPipeline pipeline = ch.pipeline();
+                            //设置分隔符:为固定五个长度
                             pipeline.addLast(new FixedLengthFrameDecoder(5));
                             pipeline.addLast(new StringDecoder());
                             pipeline.addLast(new ClientHandle());
