@@ -30,8 +30,8 @@ public class Server {
                     // 服务端处理客户端连接请求是顺序处理的，所以同一时间只能处理一个客户端连接，多个客户端来的时候，
                     // 服务端将不能处理的客户端连接请求放在队列中等待处理，backlog参数指定了队列的大小
                     .option(ChannelOption.SO_BACKLOG, 1024)
-                    .option(ChannelOption.SO_SNDBUF, 32*1024)   //设置发送缓冲区的大小
-                    .option(ChannelOption.SO_RCVBUF, 32*1024)   //设置接受缓冲区的大小
+                    .childOption(ChannelOption.SO_SNDBUF, 32*1024)   //设置发送缓冲区的大小
+                    .childOption(ChannelOption.SO_RCVBUF, 32*1024)   //设置接受缓冲区的大小
                     .childHandler(new ChannelInitializer<SocketChannel>() {
 
                         @Override
@@ -46,7 +46,7 @@ public class Server {
                     });
             //绑定端口
             ChannelFuture future = bootstrap.bind(8080).sync();
-
+            System.out.println("server started...");
             //等待服务器监听端口关闭
             future.channel().closeFuture().sync();
 

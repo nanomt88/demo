@@ -28,8 +28,8 @@ public class Server {
             bootstrap.group(boss,worker)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 1024)
-                    .option(ChannelOption.SO_SNDBUF, 32*1024)
-                    .option(ChannelOption.SO_RCVBUF, 32*1024)
+                    .childOption(ChannelOption.SO_SNDBUF, 32*1024)
+                    .childOption(ChannelOption.SO_RCVBUF, 32*1024)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
 
                         @Override
