@@ -39,6 +39,7 @@ public class WebSocketServer {
             System.out.println("Web socket server started, port 8080...");
             System.out.println("visit at http://localhost:8080/");
 
+            channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

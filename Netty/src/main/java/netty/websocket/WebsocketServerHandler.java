@@ -34,30 +34,6 @@ public class WebsocketServerHandler extends SimpleChannelInboundHandler<Object> 
         }
     }
 
-    private void handleWebSocketFrame(ChannelHandlerContext ctx, WebSocketFrame frame) {
-        //判断是否是关闭链路的指令
-        if(frame instanceof CloseWebSocketFrame){
-            handshaker.close(ctx.channel(), (CloseWebSocketFrame) frame.retain());
-            return;
-        }
-
-        //判断是否是ping消息
-        if(frame instanceof PingWebSocketFrame){
-            ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
-        }
-
-        //本示例只支持文本消息，不支持二进制消息
-        if( !(frame instanceof TextWebSocketFrame) ){
-            throw new UnsupportedOperationException(String.format("%s frame types not supported", frame.getClass().getName()));
-        }
-
-        //返回应答消息
-        String reqText = ((TextWebSocketFrame) frame).text();
-        System.out.println(String.format("%s received %s", ctx.channel(), reqText));
-        ctx.channel().write(new TextWebSocketFrame(reqText + ", 你好。。。，现在时间："+ new java.util.Date().toString()));
-
-    }
-
     private void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest req) {
         //如果HTTP解码失败，返回HTTP异常
         //HTTP请求头参数Upgrade 必须为 websocket
@@ -77,6 +53,31 @@ public class WebsocketServerHandler extends SimpleChannelInboundHandler<Object> 
             handshaker.handshake(ctx.channel(), req);
         }
 
+
+    }
+
+    private void handleWebSocketFrame(ChannelHandlerContext ctx, WebSocketFrame frame) {
+        //判断是否是关闭链路的指令
+        if(frame instanceof CloseWebSocketFrame){
+            handshaker.close(ctx.channel(), (CloseWebSocketFrame) frame.retain());
+            return;
+        }
+
+        //判断是否是ping消息
+        if(frame instanceof PingWebSocketFrame){
+            ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
+            return;
+        }
+
+        //本示例只支持文本消息，不支持二进制消息
+        if( !(frame instanceof TextWebSocketFrame) ){
+            throw new UnsupportedOperationException(String.format("%s frame types not supported", frame.getClass().getName()));
+        }
+
+        //返回应答消息
+        String reqText = ((TextWebSocketFrame) frame).text();
+        System.out.println(String.format("%s received %s", ctx.channel(), reqText));
+        ctx.channel().write(new TextWebSocketFrame(reqText + ", 你好。。。，现在时间："+ new java.util.Date().toString()));
 
     }
 
