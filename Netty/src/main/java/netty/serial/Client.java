@@ -9,6 +9,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
+import netty.util.GzipUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,7 +20,6 @@ import java.io.IOException;
  * Created by ZBOOK-17 on 2017/4/20.
  */
 public class Client {
-    private static final String END_TAG = "$_$";
 
     public static void main(String[] args) {
 
@@ -29,6 +29,9 @@ public class Client {
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(group)
                     .channel(NioSocketChannel.class)
+                    .option(ChannelOption.SO_BACKLOG, 1024)
+                    .option(ChannelOption.SO_SNDBUF, 32*1024)
+                    .option(ChannelOption.SO_RCVBUF, 32*1024)
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
@@ -42,15 +45,15 @@ public class Client {
 
 
             ChannelFuture future = bootstrap.connect("127.0.0.1", 8080).sync();
-
+            System.out.println("client started...");
             for(int i=0 ; i<5; i++){
                 RequestObject req = new RequestObject();
                 req.setId(""+i);
                 req.setName("pic"+i);
                 req.setRequestMessage("我是client："+i);
                 //读取文件
-                String path = System.getProperty("user.dir") + File.separatorChar + "netty" +File.separatorChar +"file"
-                        +File.separatorChar + "source" +  File.separatorChar + req.getName()+".jpg";
+                String path = System.getProperty("user.dir") + File.separatorChar + "Netty" +File.separatorChar +"file"
+                        +File.separatorChar + "source" +  File.separatorChar + i+".jpg";
                 File file = new File(path);
                 FileInputStream inputStream = new FileInputStream(file);
                 byte[] bytes = new byte[inputStream.available()];
@@ -58,7 +61,7 @@ public class Client {
                 inputStream.close();
 
                 //设置字节流
-                req.setAttachment(bytes);
+                req.setAttachment(GzipUtils.gzip(bytes));
                 future.channel().writeAndFlush(req);
             }
 
@@ -70,6 +73,8 @@ public class Client {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             group.shutdownGracefully();

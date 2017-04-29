@@ -10,6 +10,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 import netty.util.GzipUtils;
 import org.jboss.marshalling.Marshalling;
 
@@ -31,7 +33,10 @@ public class Server {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(boss,worker)
                     .channel(NioServerSocketChannel.class)
+                    .handler(new LoggingHandler(LogLevel.INFO))
                     .option(ChannelOption.SO_BACKLOG, 1024)
+                    .childOption(ChannelOption.SO_SNDBUF, 32*1024)
+                    .childOption(ChannelOption.SO_RCVBUF, 32*1024)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
 
                         @Override
@@ -83,7 +88,7 @@ public class Server {
             System.out.println("收到消息：：："+msg);
 
             byte[] ungzip = GzipUtils.ungzip(msg.getAttachment());
-            String path = System.getProperty("user.dir") + File.separatorChar + "netty" +File.separatorChar +"file"
+            String path = System.getProperty("user.dir") + File.separatorChar + "Netty" +File.separatorChar +"file"
                     +File.separatorChar + "receive" +  File.separatorChar + msg.getName()+".jpg";
 
             FileOutputStream outputStream = new FileOutputStream(path);
