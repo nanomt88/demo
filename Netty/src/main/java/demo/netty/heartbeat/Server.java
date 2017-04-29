@@ -25,10 +25,10 @@ import java.util.Map;
 public class Server {
 
     public static void main(String[] args) {
+        //创建线程组
         EventLoopGroup boss = new NioEventLoopGroup();
         EventLoopGroup worker = new NioEventLoopGroup();
         try {
-            //创建线程组
 
             //创建服务器辅助类
             ServerBootstrap bootstrap = new ServerBootstrap();
