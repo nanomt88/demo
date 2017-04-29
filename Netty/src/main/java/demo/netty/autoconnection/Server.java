@@ -40,7 +40,7 @@ public class Server {
                             //设置Marshalling编解码器
                             ch.pipeline().addLast(MarshallingCodeFactory.buildMarshallingDecoder());
                             ch.pipeline().addLast(MarshallingCodeFactory.buildMarshallingEncoder());
-                            ch.pipeline().addLast(new ReadTimeoutHandler(5));
+                            ch.pipeline().addLast(new ReadTimeoutHandler(5));   //五秒内无数据，自动断开连接
                             ch.pipeline().addLast(new ServerHandle());
                         }
                     });

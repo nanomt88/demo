@@ -46,6 +46,10 @@ public class Client {
                 });
 
     }
+
+    /**
+     * 连接远程服务器
+     */
     public void connect(){
         try {
             future = bootstrap.connect(ip, port).sync();
@@ -56,13 +60,16 @@ public class Client {
     }
 
     public ChannelFuture getFutureChannel(){
+        //判断，为空则自动重连，使用double check 的方法，防止并发连接
         if(future == null){
             synchronized (this) {
                 if(future == null) {
+                    //连接远程服务器
                     connect();
                 }
             }
         }
+        //如果连接不可用，也自动重连
         if(!future.channel().isActive()){
             synchronized (this) {
                 if(!future.channel().isActive()) {
@@ -88,7 +95,7 @@ public class Client {
             }
             client.getFutureChannel().channel().closeFuture().sync();
 
-
+            //主线程执行完成之后，关闭连接，子线程可以重连 然后进行数据读写
             new Thread(new Runnable() {
                 @Override
                 public void run() {
