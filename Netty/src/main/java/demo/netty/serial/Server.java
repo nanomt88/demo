@@ -51,8 +51,8 @@ public class Server {
             e.printStackTrace();
         }finally {
             //关闭线程组  释放资源
-            worker.shutdownGracefully();
             boss.shutdownGracefully();
+            worker.shutdownGracefully();
         }
     }
 

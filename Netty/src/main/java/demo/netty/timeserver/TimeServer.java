@@ -48,8 +48,8 @@ public class TimeServer {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            worker.shutdownGracefully();
             boss.shutdownGracefully();
+            worker.shutdownGracefully();
         }
     }
 

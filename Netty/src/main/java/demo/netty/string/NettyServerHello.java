@@ -55,8 +55,8 @@ public class NettyServerHello {
             f.channel().closeFuture().sync();
 
         } finally {
-            workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
         }
     }
 

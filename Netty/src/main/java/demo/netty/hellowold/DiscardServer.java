@@ -51,8 +51,8 @@ public class DiscardServer {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            work.shutdownGracefully();
             boss.shutdownGracefully();
+            work.shutdownGracefully();
         }
 
 
