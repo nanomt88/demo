@@ -1,12 +1,13 @@
 package com.nanomt88.demo;
 
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import redis.clients.jedis.JedisCluster;
-import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -110,11 +111,45 @@ public class RedisClient {
         return result;
     }
 
+    public static JedisCluster getRedisCluster(){
+        Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
+        //Jedis Cluster will attempt to discover cluster nodes automatically
+        jedisClusterNodes.add(new HostAndPort("192.168.1.130", 16379));
+        jedisClusterNodes.add(new HostAndPort("192.168.1.130", 16378));
+        jedisClusterNodes.add(new HostAndPort("192.168.1.130", 16377));
+        jedisClusterNodes.add(new HostAndPort("192.168.1.130", 16376));
+        jedisClusterNodes.add(new HostAndPort("192.168.1.130", 16375));
+        jedisClusterNodes.add(new HostAndPort("192.168.1.130", 16374));
+        // maxAttempts：出现异常最大重试次数
+
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        //设置最大实例总数
+        jedisPoolConfig.setMaxTotal(500);
+        //控制一个pool最多有多少个状态为idle(空闲的)的jedis实例。
+        jedisPoolConfig.setMaxIdle(100);
+        jedisPoolConfig.setMinIdle(100);
+        //表示当borrow(引入)一个jedis实例时，最大的等待时间，如果超过等待时间，则直接抛出JedisConnectionException；
+        jedisPoolConfig.setMaxWaitMillis(3 * 1000);
+        // 在borrow一个jedis实例时，是否提前进行alidate操作；如果为true，则得到的jedis实例均是可用的；
+        jedisPoolConfig.setTestOnBorrow(true);
+        // 在还会给pool时，是否提前进行validate操作
+        jedisPoolConfig.setTestOnReturn(true);
+        jedisPoolConfig.setTestWhileIdle(true);
+        jedisPoolConfig.setMinEvictableIdleTimeMillis(500);
+        jedisPoolConfig.setSoftMinEvictableIdleTimeMillis(1000);
+        jedisPoolConfig.setTimeBetweenEvictionRunsMillis(1000);
+        jedisPoolConfig.setNumTestsPerEvictionRun(100);
+
+        JedisCluster jc = new JedisCluster(jedisClusterNodes,500,10000, jedisPoolConfig);
+        return jc;
+    }
+
     public static void main(String[] args) {
 
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-redis.xml");
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-redis.xml");
 
-        jedis = ctx.getBean(JedisCluster.class);
+//        jedis = ctx.getBean(JedisCluster.class);
+        jedis = getRedisCluster();
 
         Map<String, JedisPool> nodes = jedis.getClusterNodes();
         for (Map.Entry<String, JedisPool> entry : nodes.entrySet()) {

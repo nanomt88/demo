@@ -30,18 +30,19 @@
                     <constructor-arg name="host" value="192.168.1.130"/>
                     <constructor-arg name="port" value="16377"/>
                 </bean>
-                <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="192.168.1.130"/>
-                    <constructor-arg name="port" value="16376"/>
-                </bean>
-                <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="192.168.1.130"/>
-                    <constructor-arg name="port" value="16375"/>
-                </bean>
-                <bean class="redis.clients.jedis.HostAndPort">
-                    <constructor-arg name="host" value="192.168.1.130"/>
-                    <constructor-arg name="port" value="16374"/>
-                </bean>
+                <!--    只需要配置主节点即可，从节点不需要配置   -->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="192.168.1.130"/>-->
+                    <!--<constructor-arg name="port" value="16376"/>-->
+                <!--</bean>-->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="192.168.1.130"/>-->
+                    <!--<constructor-arg name="port" value="16375"/>-->
+                <!--</bean>-->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="192.168.1.130"/>-->
+                    <!--<constructor-arg name="port" value="16374"/>-->
+                <!--</bean>-->
             </set>
         </constructor-arg>
     </bean>
