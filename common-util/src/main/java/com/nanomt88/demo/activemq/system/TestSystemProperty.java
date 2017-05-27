@@ -1,4 +1,4 @@
-package com.nanomt88.util.system;
+package com.nanomt88.demo.activemq.system;
 
 public class TestSystemProperty {
 	
