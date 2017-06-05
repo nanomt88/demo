@@ -22,6 +22,33 @@
 
     <dependencies>
 
+        <!--    RocketMQ 依赖包 开始   -->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.rocketmq</groupId>-->
+            <!--<artifactId>rocketmq-all</artifactId>-->
+            <!--<version>3.5.8</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.rocketmq</groupId>-->
+            <!--<artifactId>rocketmq-client</artifactId>-->
+            <!--<version>3.5.8</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.rocketmq</groupId>-->
+            <!--<artifactId>rocketmq-remoting</artifactId>-->
+            <!--<version>3.5.8</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.rocketmq</groupId>-->
+            <!--<artifactId>rocketmq-broker</artifactId>-->
+            <!--<version>3.5.8</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.rocketmq</groupId>-->
+            <!--<artifactId>rocketmq-common</artifactId>-->
+            <!--<version>3.5.8</version>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-client</artifactId>
@@ -70,6 +97,7 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.13</version>
         </dependency>
+        <!--    RocketMQ 依赖包 结束   -->
 
         <!-- 日志相关依赖 -->
         <dependency>
