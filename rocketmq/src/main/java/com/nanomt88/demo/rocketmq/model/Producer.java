@@ -1,4 +1,4 @@
-package com.nanomt88.demo.rocketmq.quickstart;
+package com.nanomt88.demo.rocketmq.model;
 
 
 import org.apache.rocketmq.client.exception.MQBrokerException;
@@ -14,7 +14,7 @@ import org.apache.rocketmq.remoting.exception.RemotingException;
  * @Description: //TODO
  */
 
-public class Product {
+public class Producer {
 
     public static void main(String[] args) throws MQClientException {
         /**
@@ -38,12 +38,12 @@ public class Product {
          * 例如消息写入Master成功，但是Slave不成功，这种情况消息属于成功，但是对于个别应用如果对消息可靠性要求极高，<br>
          * 需要对这种情况做处理。另外，消息可能会存在发送失败的情况，失败重试由应用来处理。
          */
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 5; i++){
             try {
                 {
                     Message msg = new Message("TopicTest1",// topic
                             "TagA",// tag
-                            "OrderID001",// key ： 用于唯一标记，方便去重
+                            "OrderID001",// key
                             ("Hello MetaQ").getBytes());// body
                     SendResult sendResult = producer.send(msg);
                     System.out.println(sendResult);
