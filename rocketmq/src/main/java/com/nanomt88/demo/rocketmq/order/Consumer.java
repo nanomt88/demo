@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * 顺序消费场景 demo
@@ -48,6 +49,7 @@ public class Consumer {
         //顺序消费必须实现：MessageListenerOrderly接口，这个接口保证单线程消费
         consumer.registerMessageListener(new MessageListenerOrderly() {
 
+            Random random = new Random();
             @Override
         public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
                 /**
@@ -64,7 +66,7 @@ public class Consumer {
                         String body = new String(msg.getBody(),"UTF-8");
                         logger.info("{} 收到消息：tag:{}msg:{}" , new Object[] { body ,msg.getTags(),  msg});
 
-                        Thread.sleep(500);
+                        Thread.sleep(random.nextInt(1000));
                         logger.info("{} 执行完毕", body);
                     }
                 } catch (Exception ex) {

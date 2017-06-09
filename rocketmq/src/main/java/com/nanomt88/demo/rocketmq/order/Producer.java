@@ -39,7 +39,7 @@ public class Producer {
          * 例如消息写入Master成功，但是Slave不成功，这种情况消息属于成功，但是对于个别应用如果对消息可靠性要求极高，<br>
          * 需要对这种情况做处理。另外，消息可能会存在发送失败的情况，失败重试由应用来处理。
          */
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 5; i++){
             try {
                 {
                     Message msg = new Message("TopicTest1",// topic
@@ -63,7 +63,14 @@ public class Producer {
                             "order_2",// tag
                             "OrderID-B00"+i,// key
                             (new Date().toString() + "message_B"+i).getBytes());// body
-                    SendResult sendResult = producer.send(msg);
+                    SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
+                        @Override
+                        public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
+                            // 参数arg是外层传入的0，用于选择队列
+                            Integer index = (Integer) arg;
+                            return mqs.get(index);
+                        }
+                    },1 );  //0 : 表示队列的下标
                     System.out.println(sendResult);
                 }
 
@@ -72,16 +79,14 @@ public class Producer {
                             "order_3",// tag
                             "OrderID-C00"+i,// key
                             (new Date().toString() + "message_C"+i).getBytes());// body
-                    SendResult sendResult = producer.send(msg);
-                    System.out.println(sendResult);
-                }
-
-                {
-                    Message msg = new Message("TopicTest1",// topic
-                            "order_4",// tag
-                            "OrderID-D00"+i,// key
-                            (new Date().toString() + "message_D"+i).getBytes());// body
-                    SendResult sendResult = producer.send(msg);
+                    SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
+                        @Override
+                        public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
+                            // 参数arg是外层传入的0，用于选择队列
+                            Integer index = (Integer) arg;
+                            return mqs.get(index);
+                        }
+                    },2 );  //0 : 表示队列的下标
                     System.out.println(sendResult);
                 }
             } catch (RemotingException e) {
