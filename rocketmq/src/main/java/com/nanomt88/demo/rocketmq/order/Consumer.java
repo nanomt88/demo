@@ -13,10 +13,11 @@ import java.util.Random;
 
 /**
  * 顺序消费场景 demo
+ *  顺序消费只能在一个consumer上面执行，才能保证顺序消费；多线程也只能有四个线程，跟四个队列对应
  */
 public class Consumer {
 
-    private  static final Logger logger = LoggerFactory.getLogger(Consumer.class);
+    private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
     public static void main(String[] args) throws MQClientException {
 
@@ -25,18 +26,10 @@ public class Consumer {
         consumer.setNamesrvAddr("192.168.1.140:9876;192.168.1.141:9876");
 
 
-
         /**
          * 设置 在Push模式下，一次最多拉取的消息数量
          */
         consumer.setConsumeMessageBatchMaxSize(1);
-
-        /**
-         *
-         *  setPullBatchSize 方法在 DefaultMQPullConsumer 方式下才会生效
-         *  consumer.setPullBatchSize(32);
-         */
-        consumer.setPullInterval(0);
 
         // ============================== consumer 配置参数结束 =====================================
 
@@ -50,8 +43,9 @@ public class Consumer {
         consumer.registerMessageListener(new MessageListenerOrderly() {
 
             Random random = new Random();
+
             @Override
-        public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
+            public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
                 /**
                  *  List<MessageExt> msgs : 参数msgs为list类型，可以进行批量拉取消息
                  *
@@ -60,11 +54,11 @@ public class Consumer {
                     /**
                      *  这里处理业务逻辑，业务逻辑处理成功之后才返回 CONSUME_SUCCESS
                      */
-                    if(msgs!=null && msgs.size()>0){
+                    if (msgs != null && msgs.size() > 0) {
 
                         MessageExt msg = msgs.get(0);
-                        String body = new String(msg.getBody(),"UTF-8");
-                        logger.info("{} 收到消息：tag:{}msg:{}" , new Object[] { body ,msg.getTags(),  msg});
+                        String body = new String(msg.getBody(), "UTF-8");
+                        logger.info("{} 收到消息：tag:{}msg:{}", new Object[]{body, msg.getTags(), msg});
 
                         Thread.sleep(random.nextInt(1000));
                         logger.info("{} 执行完毕", body);
