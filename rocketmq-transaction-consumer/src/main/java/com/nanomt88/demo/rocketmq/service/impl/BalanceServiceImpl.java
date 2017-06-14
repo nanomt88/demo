@@ -23,7 +23,7 @@ public class BalanceServiceImpl implements BalanceService {
 
 	public void updateAmountByUsername(BigDecimal amount, String mode, String username){
 		if("IN".equals(mode)){
-			amount =  new BigDecimal(0 - Math.abs(amount.doubleValue()));
+			amount =  new BigDecimal(0D - Math.abs(amount.doubleValue()));
 		}else if("OUT".equals(mode)){
 			amount =  new BigDecimal(Math.abs(amount.doubleValue()));
 		}

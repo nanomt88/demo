@@ -55,11 +55,9 @@ public class ConsumerMessageListenerImpl implements ConsumerMessageListener {
             BigDecimal amount = new BigDecimal(jsonObject.getDouble("amount"));
             String mode = jsonObject.getString("balanceMode");
 
+            //处理业务逻辑
             balanceService.updateAmountByUsername(amount, mode, username);
 
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return false;
         } catch (Exception e) {
             e.printStackTrace();
             return false;

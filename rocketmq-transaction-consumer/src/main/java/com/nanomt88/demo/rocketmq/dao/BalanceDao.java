@@ -17,4 +17,5 @@ public interface BalanceDao extends JpaRepository<Balance, Long> {
     @Query(" update Balance b set b.amount=b.amount+:amount where b.username=:username")
     void updateAmountByUsername(@Param("amount") BigDecimal amount, @Param("username") String username);
 
+    Balance findByUsername(String username);
 }
