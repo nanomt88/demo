@@ -22,7 +22,6 @@ import static org.junit.Assert.*;
  */
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = ApplicationConfigTest.class)
 @Transactional
 @SpringBootTest(classes = Main.class)  // 指定spring-boot的启动类
 //@SpringApplicationConfiguration(classes = Application.class)// 1.4.0 前版本
@@ -41,7 +40,7 @@ public class BalanceServiceImplTest {
 
         Balance after = balanceDao.findOne(balance.getId());
 
-        assertEquals(balance.getAmount().doubleValue() - 100, after.getAmount().doubleValue());
+        assertEquals(balance.getAmount().doubleValue() + 100, after.getAmount().doubleValue(), 0);
     }
 
 }

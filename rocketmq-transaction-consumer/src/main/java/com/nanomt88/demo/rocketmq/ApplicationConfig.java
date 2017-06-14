@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -18,14 +17,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories({"com.nanomt88.demo.rocketmq.dao"})
 @EnableTransactionManagement
-//@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy
 public class ApplicationConfig {
 
 	@Autowired
@@ -62,7 +59,7 @@ public class ApplicationConfig {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setGenerateDdl(false);
 		adapter.setDatabase(Database.MYSQL);
-		adapter.setShowSql(false);
+		//adapter.setShowSql(true);
 
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setDataSource(dataSource());
@@ -70,12 +67,18 @@ public class ApplicationConfig {
 		factory.setPackagesToScan("com.nanomt88.demo.rocketmq.entity");
 		factory.setJpaDialect(new HibernateJpaDialect());
 
-		Map<String, Object> jpaProperties = new HashMap<String, Object>();
-		jpaProperties.put("hibernate.ejb.naming_strategy", "com.nanomt88.demo.rocketmq.ZLBNamingStrategy");
-		jpaProperties.put("hibernate.jdbc.batch_size",50);
-		//jpaProperties.put("hibernate.show_sql",true);
+		Properties props = new Properties();
+		props.put("hibernate.show_sql",true);
+		props.put("hibernate.jdbc.batch_size", 50);
+		props.put("hibernate.physical_naming_strategy", "com.nanomt88.demo.rocketmq.ZLBNamingStrategy");
 
-		factory.setJpaPropertyMap(jpaProperties);
+//		hibernate5 以前，表映射使用一下的方式，hibernate5以后该参数一分为2：
+// 			hibernate.physical_naming_strategy ： org.hibernate.boot.model.naming.PhysicalNamingStrategy
+//		   	hibernate.implicit_naming_strategy ： org.hibernate.boot.model.naming.ImplicitNamingStrategy
+//		props.put("hibernate.ejb.naming_strategy", "com.nanomt88.demo.rocketmq.ZLBNamingStrategy");
+
+
+		factory.setJpaProperties(props);
 		factory.afterPropertiesSet();
 		return factory.getObject();
 	}
