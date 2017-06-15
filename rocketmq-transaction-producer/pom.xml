@@ -22,7 +22,7 @@
         <file_encoding>UTF-8</file_encoding>
 
         <spring_version>4.3.6.RELEASE</spring_version>
-        <spring_boot_version>1.2.5.RELEASE</spring_boot_version>
+        <spring_boot_version>1.4.3.RELEASE</spring_boot_version>
         <hibernate_version>5.2.10.Final</hibernate_version>
         <rocketmq_version>4.0.0-incubating</rocketmq_version>
     </properties>
