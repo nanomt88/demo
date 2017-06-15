@@ -1,12 +1,9 @@
 package com.nanomt88.demo.rocketmq;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.boot.model.naming.Identifier;
-import org.hibernate.boot.model.naming.PhysicalNamingStrategy;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
 
-import java.io.Serializable;
 import java.util.Locale;
 
 public class ZLBNamingStrategy extends PhysicalNamingStrategyStandardImpl{

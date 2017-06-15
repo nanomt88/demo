@@ -1,32 +1,35 @@
 package com.nanomt88.demo.rocketmq;
 
-import org.hibernate.cfg.DefaultNamingStrategy;
+import org.hibernate.boot.model.naming.Identifier;
+import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
+import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
 
-public class ZLBNamingStrategy extends DefaultNamingStrategy {
+import java.util.Locale;
 
-	private static final long serialVersionUID = 1L;
+public class ZLBNamingStrategy extends PhysicalNamingStrategyStandardImpl{
 
-	private String splitAndDown(String original) {
-		if (original == null) {
-			return null;
+
+	protected static String addUnderscores(String name) {
+		final StringBuilder buf = new StringBuilder( name.replace('.', '_') );
+		for (int i=1; i<buf.length()-1; i++) {
+			if (
+					Character.isLowerCase( buf.charAt(i-1) ) &&
+							Character.isUpperCase( buf.charAt(i) ) &&
+							Character.isLowerCase( buf.charAt(i+1) )
+					) {
+				buf.insert(i++, '_');
+			}
 		}
-		String[] words = original.split("(?=[A-Z])");
-		StringBuffer sb = new StringBuffer();
-		for (String word : words) {
-			if (word.length() > 0)
-				sb.append(word.toLowerCase() + "_");
-		}
-		sb.deleteCharAt(sb.length() - 1);
-		return sb.toString();
+		return buf.toString().toLowerCase(Locale.ROOT);
 	}
 
 	@Override
-	public String classToTableName(String className) {
-		return "t_" + splitAndDown(className);
+	public Identifier toPhysicalTableName(Identifier name, JdbcEnvironment context) {
+		return new Identifier(addUnderscores("t_"+name.getText()), name.isQuoted());
 	}
 
 	@Override
-	public String propertyToColumnName(String propertyName) {
-		return splitAndDown(propertyName);
+	public Identifier toPhysicalColumnName(Identifier name, JdbcEnvironment context) {
+		return new Identifier(addUnderscores(name.getText()), name.isQuoted());
 	}
 }

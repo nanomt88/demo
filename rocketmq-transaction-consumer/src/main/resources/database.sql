@@ -1,6 +1,6 @@
 CREATE TABLE `t_pay` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `amount` decimal(20,2) DEFAULT '0.00' COMMENT '余额',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否同步， 0：未同步；1：已同步',
   `update_by` varchar(20) NOT NULL COMMENT '用户名',

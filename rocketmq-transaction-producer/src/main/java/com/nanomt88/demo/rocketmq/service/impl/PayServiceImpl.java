@@ -1,11 +1,12 @@
 package com.nanomt88.demo.rocketmq.service.impl;
 
 
-import com.nanomt88.demo.rocketmq.dao.BalanceDao;
-import com.nanomt88.demo.rocketmq.service.BalanceService;
+import com.nanomt88.demo.rocketmq.dao.PayDao;
+import com.nanomt88.demo.rocketmq.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 /**
@@ -15,10 +16,11 @@ import java.math.BigDecimal;
  * @date 2016年11月10日
  */
 @Service
-public class BalanceServiceImpl implements BalanceService {
+@Transactional
+public class PayServiceImpl implements PayService {
 
 	@Autowired
-	private BalanceDao balanceDao;
+	private PayDao balanceDao;
 
 
 	public void updateAmountByUsername(BigDecimal amount, String mode, String username){
