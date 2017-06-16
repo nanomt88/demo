@@ -27,7 +27,11 @@ public class BalanceServiceImpl implements BalanceService {
 		}else if("OUT".equals(mode)){
 			amount =  new BigDecimal(0D - Math.abs(amount.doubleValue()));
 		}
-		balanceDao.updateAmountByUsername(amount, username);
+
+		int i = balanceDao.updateAmountByUsername(amount, username);
+		if(i != 1){
+			throw new IllegalArgumentException("can't find username");
+		}
 	}
 
 }

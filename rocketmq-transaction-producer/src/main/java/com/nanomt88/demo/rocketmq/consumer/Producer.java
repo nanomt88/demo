@@ -117,6 +117,15 @@ public class Producer {
         defaultMQProducer.shutdown();
     }
 
+    public void shutdown(){
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                defaultMQProducer.shutdown();
+            }
+        }));
+        System.exit(0);
+    }
+
     public TransactionMQProducer getDefaultMQProducer() {
         return defaultMQProducer;
     }

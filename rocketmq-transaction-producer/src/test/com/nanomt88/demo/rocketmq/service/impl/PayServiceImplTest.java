@@ -31,10 +31,16 @@ public class PayServiceImplTest {
 
     @Test
     public void updateAmountByUsername() throws Exception {
+        String username = "张三";
 
         Pay pay = payDao.getOne(1L);
+        BigDecimal amount = pay.getAmount();
 
-        payService.updateAmountByUsername(new BigDecimal(100), "OUT", "username");
+        payService.updateAmountByUsername(new BigDecimal(100), "IN", username);
+
+        Pay pay2 = payDao.getOne(1L);
+
+        assertEquals(amount.add(new BigDecimal(100)), pay2.getAmount());
 
     }
 

@@ -3,6 +3,7 @@ package com.nanomt88.demo.rocketmq.service.impl;
 import com.nanomt88.demo.boot.Main;
 import com.nanomt88.demo.rocketmq.dao.BalanceDao;
 import com.nanomt88.demo.rocketmq.entity.Balance;
+import com.nanomt88.demo.rocketmq.service.BalanceService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,23 @@ import static org.junit.Assert.*;
 public class BalanceServiceImplTest {
 
     @Autowired
+    private BalanceService balanceService;
+
+    @Autowired
     private BalanceDao balanceDao;
 
     @Test
     public void updateAmountByUsername() throws Exception {
 
         String username = "张三";
-        Balance balance = balanceDao.findByUsername(username);
+        Balance balance = balanceDao.getOne(1L);
+        BigDecimal amount = balance.getAmount();
 
-        balanceDao.updateAmountByUsername(new BigDecimal(100),username);
+        balanceService.updateAmountByUsername(new BigDecimal(100), "IN",username);
 
         Balance after = balanceDao.findOne(balance.getId());
 
-        assertEquals(balance.getAmount().doubleValue() + 100, after.getAmount().doubleValue(), 0);
+        assertEquals(amount.doubleValue() + 100, after.getAmount().doubleValue(), 0);
     }
 
 }

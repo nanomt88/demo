@@ -15,6 +15,8 @@ public class Pay {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String userId;
+
     private String username;
 
     private BigDecimal amount;
@@ -96,5 +98,13 @@ public class Pay {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
