@@ -1,4 +1,4 @@
-package com.nanomt88.demo.rocketmq.quickstart;
+package com.nanomt88.demo.rocketmq.pull;
 
 
 import org.apache.rocketmq.client.exception.MQBrokerException;
@@ -14,7 +14,7 @@ import org.apache.rocketmq.remoting.exception.RemotingException;
  * @Description: //TODO
  */
 
-public class Product {
+public class Producer {
 
     public static void main(String[] args) throws MQClientException {
         /**
@@ -27,28 +27,7 @@ public class Product {
 
         producer.setNamesrvAddr("192.168.1.140:9876;192.168.1.141:9876");
 
-        /**
-         * 设置 producer 同步模式下发送消息失败之后，重试的次数，
-         * 这个可能会导致重复消息，需要业务保证幂等 （默认为2次）
-         */
-//        producer.setRetryTimesWhenSendFailed(3);
-
-        /**
-         * 设置producer每隔多久 发送心跳给broker
-         */
-//        producer.setHeartbeatBrokerInterval(1000 * 30);
-
-        /**
-         * 设置当message body超过多大的时候进行压缩
-         */
-//        producer.setCompressMsgBodyOverHowmuch(1024 * 1024);
-
-        /**
-         * 设置最大的消息大小，超过之后不让发送消息
-         */
-//        producer.setMaxMessageSize(1024 * 1024 * 20);
-
-
+        producer.setDefaultTopicQueueNums(4);
         /**
          * Producer对象在使用之前必须要调用start初始化，初始化一次即可<br>
          * 注意：切记不可以在每次发送消息时，都调用start方法
@@ -61,12 +40,12 @@ public class Product {
          * 例如消息写入Master成功，但是Slave不成功，这种情况消息属于成功，但是对于个别应用如果对消息可靠性要求极高，<br>
          * 需要对这种情况做处理。另外，消息可能会存在发送失败的情况，失败重试由应用来处理。
          */
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 32; i++){
             try {
                 {
-                    Message msg = new Message("TopicTest1",// topic
+                    Message msg = new Message("pullTopic2",// topic
                             "TagA",// tag
-                            "OrderID001",// key ： 用于唯一标记，方便去重
+                            "OrderID_00"+i,// key
                             ("Hello MetaQ").getBytes());// body
                     SendResult sendResult = producer.send(msg);
                     System.out.println(sendResult);

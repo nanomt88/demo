@@ -39,8 +39,8 @@ public class Consumer {
 
         /**
          *  拉取消息本地队列缓存消息最大数量： 默认1000
-         *  consumer.setPullThresholdForQueue(1000);
          */
+//        consumer.setPullThresholdForQueue(1000);
 
         /**
          * 设置 在Push模式下，一次最多拉取的消息数量
@@ -52,7 +52,7 @@ public class Consumer {
          *  setPullBatchSize 方法在 DefaultMQPullConsumer 方式下才会生效
          *  consumer.setPullBatchSize(32);
          */
-        consumer.setPullInterval(0);
+//        consumer.setPullInterval(0);
 
         // ============================== consumer 配置参数结束 =====================================
 
