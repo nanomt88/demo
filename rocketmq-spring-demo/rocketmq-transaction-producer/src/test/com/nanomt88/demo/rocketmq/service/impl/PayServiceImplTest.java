@@ -2,9 +2,12 @@ package com.nanomt88.demo.rocketmq.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.nanomt88.demo.boot.Main;
+import com.nanomt88.demo.rocketmq.common.MessageStatus;
 import com.nanomt88.demo.rocketmq.consumer.MQProducer;
 import com.nanomt88.demo.rocketmq.consumer.TransactionExecuterImpl;
+import com.nanomt88.demo.rocketmq.dao.EventProducerDao;
 import com.nanomt88.demo.rocketmq.dao.PayDao;
+import com.nanomt88.demo.rocketmq.entity.EventProducer;
 import com.nanomt88.demo.rocketmq.entity.Pay;
 import com.nanomt88.demo.rocketmq.service.PayService;
 import org.apache.rocketmq.client.QueryResult;
@@ -51,6 +54,9 @@ public class PayServiceImplTest {
     @Autowired
     TransactionExecuterImpl transactionExecuter;
 
+    @Autowired
+    EventProducerDao eventProducerDao;
+
     @Test
     public void updateAmountByUsername() throws Exception {
         String username = "张三";
@@ -90,6 +96,18 @@ public class PayServiceImplTest {
 
         //可以追加参数
         Map<String,Object> map = new HashMap<>();
+
+        //记录发送消息到日志表
+
+        EventProducer event = new EventProducer();
+        event.setTopic(message.getTopic());
+//        event.setMsgId(message.getBuyerId());
+        event.setMsgKey(message.getKeys());
+        event.setMsgBody(new String(message.getBody(),"UTF-8"));
+        event.setMsgKey(JSONObject.toJSONString(map));
+        event.setStatus(MessageStatus.PREPARED);
+        event.setCreateTime(new Date());
+        eventProducerDao.save(event);
 
         mqProducer.sendTransactionMessage(message, transactionExecuter,  map );
 

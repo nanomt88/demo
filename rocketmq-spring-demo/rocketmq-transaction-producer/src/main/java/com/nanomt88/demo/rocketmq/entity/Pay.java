@@ -2,6 +2,7 @@ package com.nanomt88.demo.rocketmq.entity;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,7 +10,9 @@ import java.util.Date;
  * Created by ZBOOK-17 on 2017/6/12.
  */
 @Entity
-public class Pay {
+public class Pay implements Serializable {
+
+    private static final long serialVersionUID = -8860427149069976529L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
