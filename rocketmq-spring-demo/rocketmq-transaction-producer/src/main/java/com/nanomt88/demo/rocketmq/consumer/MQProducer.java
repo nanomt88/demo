@@ -101,7 +101,7 @@ public class MQProducer {
      * @param localTransactionExecuter
      * @param transactionMapArgs
      */
-    public void sendTransactionMessage(Message message, LocalTransactionExecuter localTransactionExecuter,
+    public TransactionSendResult sendTransactionMessage(Message message, LocalTransactionExecuter localTransactionExecuter,
                                        Map<String, Object> transactionMapArgs) throws MQClientException {
         TransactionSendResult transactionSendResult = defaultMQProducer.sendMessageInTransaction(message, localTransactionExecuter, transactionMapArgs);
         /**
@@ -119,6 +119,7 @@ public class MQProducer {
              消息发送成功，但是此时 slave 不可用，消息已经进入服务器队列，只有此时服务器宕机，消息才会丢
          */
         logger.info("消息发送成功：{}，返回结果：{}",message.getKeys(), transactionSendResult);
+        return transactionSendResult;
     }
 
     @PreDestroy

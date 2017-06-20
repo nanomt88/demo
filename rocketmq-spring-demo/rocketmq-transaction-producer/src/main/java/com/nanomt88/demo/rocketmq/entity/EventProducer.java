@@ -21,16 +21,12 @@ public class EventProducer implements Serializable{
     private static final long serialVersionUID = -996634347904518089L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     /**
      * 消息主题
      */
     private String topic ;
-    /**
-     * 消息ID
-     */
-    private String msgId;
     /**
      * 消息关键字 KEY
      */
@@ -42,13 +38,14 @@ public class EventProducer implements Serializable{
      */
     private String msgExtra;
     /**
-     * 消息状态 ， 0 ： PREPARED；1：SUBMITTED
+     * 消息状态 ， 0 ： PREPARED；1：SUBMITTED ； 2：ROLL_BACK
      */
     @Convert(converter = MessageStatusConverter.class)
     private MessageStatus status;
 
     private Date createTime;
 
+    @Column(insertable = false, updatable = false)
     private Date updateTime;
 
     public long getId() {
@@ -65,14 +62,6 @@ public class EventProducer implements Serializable{
 
     public void setTopic(String topic) {
         this.topic = topic;
-    }
-
-    public String getMsgId() {
-        return msgId;
-    }
-
-    public void setMsgId(String msgId) {
-        this.msgId = msgId;
     }
 
     public String getMsgKey() {

@@ -1,6 +1,5 @@
 package com.nanomt88.demo.rocketmq.common;
 
-import com.lxft.nova.commons.type.payment.AuditTypeEnum;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
@@ -12,15 +11,15 @@ import javax.persistence.Converter;
  */
 
 @Converter(autoApply = true)
-public class MessageStatusConverter implements AttributeConverter<AuditTypeEnum,Integer> {
+public class MessageStatusConverter implements AttributeConverter<MessageStatus,Integer> {
 
     @Override
-    public Integer convertToDatabaseColumn(AuditTypeEnum auditType) {
+    public Integer convertToDatabaseColumn(MessageStatus auditType) {
         return auditType.getValue();
     }
 
     @Override
-    public AuditTypeEnum convertToEntityAttribute(Integer integer) {
-        return AuditTypeEnum.parse(integer);
+    public MessageStatus convertToEntityAttribute(Integer integer) {
+        return MessageStatus.parse(integer);
     }
 }

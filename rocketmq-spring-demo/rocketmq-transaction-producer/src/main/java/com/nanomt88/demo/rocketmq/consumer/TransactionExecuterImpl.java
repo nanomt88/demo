@@ -35,7 +35,10 @@ public class TransactionExecuterImpl implements LocalTransactionExecuter {
             String type = messageBody.getString("payType");
 
             //持久化数据
-            payService.updateAmountByUsername(amount, type, username);
+            payService.updateAmountByUsername(amount, type, username, msg);
+
+            //记录消息日志
+            payService.commitMessage(msg);
 
             //成功则通知MQ消息变更，该消息变为：确认发送
             logger.info("确认提交消息，key：{}", msg.getKeys());
@@ -46,6 +49,9 @@ public class TransactionExecuterImpl implements LocalTransactionExecuter {
 
             e.printStackTrace();
             //失败则不通知MQ该消息回滚
+
+            //回滚消息日志
+            payService.rollBackMessage(msg);
 
             return LocalTransactionState.ROLLBACK_MESSAGE;
         }

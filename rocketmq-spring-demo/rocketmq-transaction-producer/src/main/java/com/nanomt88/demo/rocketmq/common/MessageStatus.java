@@ -18,7 +18,9 @@ public enum MessageStatus {
     /**
      * 确认提交
      */
-    SUBMITTED (1);
+    SUBMITTED (1),
+
+    ROLL_BACK (2);
 
     private int status ;
 

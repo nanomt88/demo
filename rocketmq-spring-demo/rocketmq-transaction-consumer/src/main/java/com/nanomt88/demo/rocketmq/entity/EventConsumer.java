@@ -27,10 +27,6 @@ public class EventConsumer implements Serializable{
      */
     private String topic ;
     /**
-     * 消息ID
-     */
-    private String msgId;
-    /**
      * 消息关键字 KEY
      */
     private String msgKey;
@@ -61,14 +57,6 @@ public class EventConsumer implements Serializable{
 
     public void setTopic(String topic) {
         this.topic = topic;
-    }
-
-    public String getMsgId() {
-        return msgId;
-    }
-
-    public void setMsgId(String msgId) {
-        this.msgId = msgId;
     }
 
     public String getMsgKey() {

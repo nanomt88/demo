@@ -13,6 +13,7 @@ import com.nanomt88.demo.rocketmq.service.PayService;
 import org.apache.rocketmq.client.QueryResult;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.LocalTransactionState;
+import org.apache.rocketmq.client.producer.TransactionSendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.junit.Test;
@@ -57,6 +58,7 @@ public class PayServiceImplTest {
     @Autowired
     EventProducerDao eventProducerDao;
 
+
     @Test
     public void updateAmountByUsername() throws Exception {
         String username = "张三";
@@ -70,6 +72,37 @@ public class PayServiceImplTest {
 
         assertEquals(amount.add(new BigDecimal(100)), pay2.getAmount());
 
+    }
+
+    @Test
+    public void commitMessage(){
+        EventProducer event = new EventProducer();
+        event.setTopic(env.getProperty("rocketmq.topic"));
+
+        String uuid = UUID.randomUUID().toString();
+        event.setMsgKey(uuid);
+        event.setMsgBody("TEST1");
+        event.setStatus(MessageStatus.PREPARED);
+        event.setCreateTime(new Date());
+        event = eventProducerDao.saveAndFlush(event);
+
+        org.apache.rocketmq.common.message.Message msg = new org.apache.rocketmq.common.message.Message();
+        msg.setTopic(env.getProperty("rocketmq.topic"));
+        msg.setKeys(uuid);
+        payService.commitMessage(msg);
+
+        eventProducerDao.flush();
+
+        EventProducer newObj = eventProducerDao.findByTopicAndMsgKey(event.getTopic(), event.getMsgKey());
+        EventProducer one = eventProducerDao.findOne(event.getId());
+
+        assertEquals(newObj.getStatus(), MessageStatus.SUBMITTED);
+
+        payService.rollBackMessage(msg);
+
+        newObj = eventProducerDao.findByTopicAndMsgKey(event.getTopic(), event.getMsgKey());
+
+        assertEquals(newObj.getStatus(), MessageStatus.ROLL_BACK);
     }
 
     @Test
@@ -98,18 +131,17 @@ public class PayServiceImplTest {
         Map<String,Object> map = new HashMap<>();
 
         //记录发送消息到日志表
-
         EventProducer event = new EventProducer();
         event.setTopic(message.getTopic());
-//        event.setMsgId(message.getBuyerId());
         event.setMsgKey(message.getKeys());
         event.setMsgBody(new String(message.getBody(),"UTF-8"));
-        event.setMsgKey(JSONObject.toJSONString(map));
+        event.setMsgExtra(JSONObject.toJSONString(map));
         event.setStatus(MessageStatus.PREPARED);
         event.setCreateTime(new Date());
         eventProducerDao.save(event);
 
-        mqProducer.sendTransactionMessage(message, transactionExecuter,  map );
+        //发送消息
+        mqProducer.sendTransactionMessage(message, transactionExecuter, map);
 
         System.out.println("=================消息发送===================");
     }
