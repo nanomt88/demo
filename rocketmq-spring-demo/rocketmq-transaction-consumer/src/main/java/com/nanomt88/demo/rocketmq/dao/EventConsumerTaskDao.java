@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
  * @create 2017-06-19 23:04
  **/
 @Repository
-public interface EventConsumerTaskDao extends JpaRepository<EventConsumerTask, Long> {
+public interface EventConsumerTaskDao extends JpaRepository<EventConsumerTask, String> {
+
+
 }

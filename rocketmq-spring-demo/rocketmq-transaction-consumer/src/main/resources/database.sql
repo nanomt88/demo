@@ -30,12 +30,13 @@ CREATE TABLE `t_event_consumer` (
   `msg_key` varchar(100) NOT NULL COMMENT '事件关键字',
   `msg_body` text NOT NULL COMMENT '消息内容',
   `msg_extra` varchar(100) DEFAULT NULL COMMENT '消息扩展内容',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间,时间戳',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间,时间戳',
   `update_time` timestamp NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unq_t_event_producer_t_m_k` (`topic`,`msg_key`),
   KEY `index_t_event_event_c_t` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='MQ消费者消费消息记录表';
+
 
 CREATE TABLE `t_event_consumer_task` (
   `topic` varchar(100) NOT NULL COMMENT '消息topic',
@@ -47,14 +48,13 @@ CREATE TABLE `t_event_consumer_task` (
 CREATE TABLE `t_event_producer` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '应用ID',
   `topic` varchar(100) NOT NULL COMMENT '消息topic',
-  `msg_id` varchar(100) NOT NULL COMMENT '事件id',
   `msg_key` varchar(100) NOT NULL COMMENT '事件关键字',
   `msg_body` text NOT NULL COMMENT '消息内容',
   `msg_extra` varchar(100) DEFAULT NULL COMMENT '消息扩展参数',
-  `status` tinyint(4) NOT NULL COMMENT '消息状态；0 ： PREPARED；1：SUBMITTED',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间,时间戳',
+  `status` tinyint(4) NOT NULL COMMENT '消息状态；0 ： PREPARED；1：SUBMITTED ； 2：ROLL_BACK',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间,时间戳',
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unq_t_event_producer_t_m_k` (`topic`,`msg_key`),
   KEY `index_t_event_event_c_t` (`create_time`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='MQ 生产者发送消息记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='MQ 生产者发送消息记录表';

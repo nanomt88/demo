@@ -17,5 +17,5 @@ public interface ConsumerMessageListener {
      * @return
      */
     boolean onMessage(List<MessageExt> messages,
-                      ConsumeConcurrentlyContext Context);
+                      ConsumeConcurrentlyContext Context) throws Exception;
 }

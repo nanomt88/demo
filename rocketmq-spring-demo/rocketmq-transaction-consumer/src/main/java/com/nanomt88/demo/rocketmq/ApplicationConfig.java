@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -23,6 +24,7 @@ import java.util.Properties;
 @EnableJpaRepositories({"com.nanomt88.demo.rocketmq.dao"})
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
+@EnableScheduling
 public class ApplicationConfig {
 
 	@Autowired

@@ -18,7 +18,7 @@ public interface EventProducerDao  extends JpaRepository<EventProducer, Long> {
 
     EventProducer findByTopicAndMsgKey(String topic, String msgKey);
 
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query(" update EventProducer set status=:status where topic=:topic and msgKey=:msgKey ")
     int updateStatusByTopicAdnMsgKey(@Param("status") MessageStatus status, @Param("topic") String topic, @Param("msgKey") String msgKey);
 

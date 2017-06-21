@@ -3,6 +3,7 @@ package com.nanomt88.demo.rocketmq.consumer;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.nanomt88.demo.rocketmq.service.BalanceService;
+import com.nanomt88.demo.rocketmq.service.EventConsumerService;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.slf4j.Logger;
@@ -10,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -17,15 +20,18 @@ import java.util.List;
  * Created by ZBOOK-17 on 2017/6/11.
  */
 @Service
+@Transactional
 public class ConsumerMessageListenerImpl implements ConsumerMessageListener {
 
     Logger logger = LoggerFactory.getLogger(ConsumerMessageListener.class);
 
     @Autowired
     private BalanceService balanceService;
+    @Autowired
+    private EventConsumerService eventConsumerService;
 
     @Override
-    public boolean onMessage(List<MessageExt> messages, ConsumeConcurrentlyContext Context) {
+    public boolean onMessage(List<MessageExt> messages, ConsumeConcurrentlyContext Context) throws Exception {
 
         for (MessageExt msg : messages) {
 
@@ -37,7 +43,7 @@ public class ConsumerMessageListenerImpl implements ConsumerMessageListener {
         return true;
     }
 
-    private boolean handler(MessageExt msg) {
+    private boolean handler(MessageExt msg) throws Exception {
         try {
 
             String msgBody = new String(msg.getBody(), "UTF-8");
@@ -54,9 +60,10 @@ public class ConsumerMessageListenerImpl implements ConsumerMessageListener {
             //处理业务逻辑
             balanceService.updateAmountByUsername(amount, mode, username);
 
+            eventConsumerService.commitMessage(msg);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            throw e;
         }
         return true;
     }

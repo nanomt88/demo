@@ -4,9 +4,12 @@ import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -15,13 +18,19 @@ import java.util.List;
 @Service
 public class RocketMqMessageWrapper implements MessageListenerConcurrently {
 
+    private static final Logger logger = LoggerFactory.getLogger(RocketMqMessageWrapper.class);
+
     @Autowired
     private ConsumerMessageListener rocketMqMessageListener;
 
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-        if (rocketMqMessageListener.onMessage(msgs, context)) {
-            return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+        try {
+            if (rocketMqMessageListener.onMessage(msgs, context)) {
+                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+            }
+        } catch (Exception e) {
+            logger.error("Message consumer error , message : {} , error : {}", msgs, e.getMessage());
         }
         return ConsumeConcurrentlyStatus.RECONSUME_LATER;
     }

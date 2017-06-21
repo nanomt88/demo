@@ -73,6 +73,12 @@ public class Producer {
              *      提交消息之后，consumer端才能收到消息；ROLLBACK_MESSAGE 后消息就会回滚。
              */
             SendResult sendResult = producer.sendMessageInTransaction(msg, new LocalTransactionExecuter() {
+                /**
+                 *
+                 * @param msg
+                 * @param arg   此处为sendMessage时传递过来的扩展参数
+                 * @return
+                 */
                 @Override
                 public LocalTransactionState executeLocalTransactionBranch(Message msg, Object arg) {
                     try {

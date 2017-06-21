@@ -91,10 +91,7 @@ public class PayServiceImplTest {
         msg.setKeys(uuid);
         payService.commitMessage(msg);
 
-        eventProducerDao.flush();
-
         EventProducer newObj = eventProducerDao.findByTopicAndMsgKey(event.getTopic(), event.getMsgKey());
-        EventProducer one = eventProducerDao.findOne(event.getId());
 
         assertEquals(newObj.getStatus(), MessageStatus.SUBMITTED);
 

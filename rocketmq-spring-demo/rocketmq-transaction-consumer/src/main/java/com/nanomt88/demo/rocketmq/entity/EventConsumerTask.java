@@ -2,6 +2,7 @@ package com.nanomt88.demo.rocketmq.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,9 @@ import java.util.Date;
  * @create 2017-06-19 22:34
  **/
 @Entity
-public class EventConsumerTask {
+public class EventConsumerTask implements Serializable{
+
+    private static final long serialVersionUID = -4375116574089716081L;
     /**
      * 消息 topic
      */
@@ -22,4 +25,19 @@ public class EventConsumerTask {
      */
     private Date updateTime;
 
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }
