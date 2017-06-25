@@ -5,6 +5,7 @@ import org.apache.rocketmq.common.message.MessageExt;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author nanomt88@gmail.com
@@ -12,17 +13,18 @@ import java.util.List;
  **/
 public interface EventConsumerService {
 
-    void commitMessage(MessageExt msg) throws Exception ;
+    void commitMessage(MessageExt msg) throws Exception;
 
     EventConsumerTask getEventConsumerTask(String topic);
 
-    void syncConsumerEventMessages(EventConsumerTask task);
+    void syncConsumerEventMessages() throws Exception;
 
     /**
      * 查询 上一此同步时间之后，未同步的消息列表
+     *
      * @param topic
-     * @param createTime
-     * @return  message  id列表
+     * @param createTime 上一次同步到的时间
+     * @return message  message_key 列表
      */
-    List<Long> findEventMessageByTopic(String topic , Date createTime);
+    List<String> findEventMessageByTopic(String topic, Date createTime);
 }

@@ -67,7 +67,7 @@ public class PayServiceImpl implements PayService {
 	@Override
 	public void commitMessage(Message msg) {
 		//更新消息日志表中记录
-        int lines = eventProducerDao.updateStatusByTopicAdnMsgKey(MessageStatus.SUBMITTED, msg.getTopic(), msg.getKeys());
+        int lines = eventProducerDao.updateStatusByTopicAndMsgKey(MessageStatus.SUBMITTED, msg.getTopic(), msg.getKeys());
         if(lines < 1){
             throw new IllegalArgumentException("unknown topic["+msg.getTopic()+"] and keys:["+msg.getKeys()+"]");
         }
@@ -76,7 +76,7 @@ public class PayServiceImpl implements PayService {
 	@Override
 	public void rollBackMessage(Message msg) {
         //更新消息日志表中记录
-        int lines = eventProducerDao.updateStatusByTopicAdnMsgKey(MessageStatus.ROLL_BACK, msg.getTopic(), msg.getKeys());
+        int lines = eventProducerDao.updateStatusByTopicAndMsgKey(MessageStatus.ROLL_BACK, msg.getTopic(), msg.getKeys());
         if(lines < 1){
             throw  new IllegalArgumentException("unknown topic["+msg.getTopic()+"] and keys:["+msg.getKeys()+"]");
         }

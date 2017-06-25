@@ -2,7 +2,6 @@ package com.nanomt88.demo.rocketmq.service.impl;
 
 
 import com.nanomt88.demo.rocketmq.dao.BalanceDao;
-import com.nanomt88.demo.rocketmq.dao.EventConsumerDao;
 import com.nanomt88.demo.rocketmq.service.BalanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

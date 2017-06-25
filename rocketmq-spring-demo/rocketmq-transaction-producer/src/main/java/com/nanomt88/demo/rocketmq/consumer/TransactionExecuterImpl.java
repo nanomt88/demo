@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 /**
  * 用于 producer发送事物消息之后，确认消息是否成功的类
@@ -27,6 +28,14 @@ public class TransactionExecuterImpl implements LocalTransactionExecuter {
     @Override
     public LocalTransactionState executeLocalTransactionBranch(Message msg, Object arg) {
         try {
+
+            Random random = new Random();
+            int i = random.nextInt(10);
+            if(i>8){
+                logger.info("丢弃消息： key [{}]， message []", msg.getKeys(), msg);
+                return LocalTransactionState.UNKNOW;
+            }
+
             //读取数据
             JSONObject messageBody = JSON.parseObject(new String(msg.getBody(), "UTF-8"));
 

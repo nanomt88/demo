@@ -46,7 +46,7 @@ public class EventProducer implements Serializable{
     private Date createTime;
 
     @Column(insertable = false, updatable = false)
-    private Date updateTime;
+    private Date lastUpdateTime;
 
     public long getId() {
         return id;
@@ -104,11 +104,11 @@ public class EventProducer implements Serializable{
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 }

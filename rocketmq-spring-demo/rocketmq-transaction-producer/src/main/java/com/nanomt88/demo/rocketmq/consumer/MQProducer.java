@@ -69,7 +69,7 @@ public class MQProducer {
         });
 
         defaultMQProducer.start();
-        logger.info("RocketMq Producer start success");
+        logger.info("RocketMq client start success");
     }
 
     /**

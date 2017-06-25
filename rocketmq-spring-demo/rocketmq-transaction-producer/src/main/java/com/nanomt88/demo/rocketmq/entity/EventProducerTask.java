@@ -11,7 +11,7 @@ import java.util.Date;
  * @create 2017-06-19 22:34
  **/
 @Entity
-public class EventConsumerTask implements Serializable{
+public class EventProducerTask implements Serializable{
 
     private static final long serialVersionUID = -4375116574089716081L;
     /**
@@ -24,6 +24,13 @@ public class EventConsumerTask implements Serializable{
      * 上一次同步的ID值
      */
     private Date updateTime;
+
+    public EventProducerTask(){}
+
+    public EventProducerTask(String topic, Date updateTime) {
+        this.topic = topic;
+        this.updateTime = updateTime;
+    }
 
     public String getTopic() {
         return topic;

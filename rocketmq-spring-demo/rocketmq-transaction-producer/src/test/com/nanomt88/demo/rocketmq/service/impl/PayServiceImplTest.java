@@ -18,6 +18,8 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
@@ -40,6 +42,8 @@ import static org.junit.Assert.*;
 //@SpringApplicationConfiguration(classes = Application.class)// 1.4.0 前版本
 public class PayServiceImplTest {
 
+    Logger logger = LoggerFactory.getLogger(PayServiceImplTest.class);
+
     @Autowired
     Environment env;
 
@@ -60,6 +64,25 @@ public class PayServiceImplTest {
 
 
     @Test
+    public void findEventList() {
+
+        String[] array = new String[]{"", "", "", ""};
+        List<String> keys = Arrays.asList(array);
+        List<EventProducer> list = eventProducerDao.findByTopicAndStatusAndCreateTimeLessThanEqual("payTopic",
+                MessageStatus.PREPARED, new Date(0));
+
+        logger.info("array : {}", list);
+        assertNotNull(list);
+
+        eventProducerDao.updatePreparedEventByTopicAndMsgKeyIn(MessageStatus.SUBMITTED, "payTopic", keys);
+
+        list = eventProducerDao.findByTopicAndStatusAndCreateTimeLessThanEqual("payTopic",
+                MessageStatus.PREPARED, new Date(0));
+
+        assertEquals(list.size(), 0);
+    }
+
+    @Test
     public void updateAmountByUsername() throws Exception {
         String username = "张三";
 
@@ -75,7 +98,7 @@ public class PayServiceImplTest {
     }
 
     @Test
-    public void commitMessage(){
+    public void commitMessage() {
         EventProducer event = new EventProducer();
         event.setTopic(env.getProperty("rocketmq.topic"));
 
@@ -103,44 +126,75 @@ public class PayServiceImplTest {
     }
 
     @Test
+    @Transactional(value = Transactional.TxType.NOT_SUPPORTED)
     public void sendMessage() throws UnsupportedEncodingException, MQClientException {
 
         System.out.println("=================启动===================");
+        long time = System.currentTimeMillis();
+        for (int j = 0; j < 500; j++) {
 
-        //构造消息
+            sendNewMessage();
+
+            System.out.println("===================> 完成： " + j * 30 / 15000 + "%");
+        }
+        System.out.println("=================消息发送完成=================== 耗时："+ (System.currentTimeMillis() - time));
+        while (true){
+            try {
+                Thread.sleep(Integer.MAX_VALUE);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
+    public void sendNewMessage()throws UnsupportedEncodingException, MQClientException{
+        for (int i = 0; i < 10; i++) {
+
+            //构造消息
+            sendMessage("张三","IN",  "OUT");
+            sendMessage("李四","IN",  "OUT");
+            sendMessage("王五","OUT", "IN");
+
+        }
+    }
+
+
+    private void sendMessage(String name, String type1, String type2) throws UnsupportedEncodingException, MQClientException {
+
         Message message = new Message();
         message.setTopic(env.getProperty("rocketmq.topic"));
         message.setTags("tag");
         //key
         String uuid = UUID.randomUUID().toString();
         message.setKeys(uuid);
-        System.out.println("message ID : " +uuid);
+        System.out.println("message ID : " + uuid);
 
         JSONObject json = new JSONObject();
-        json.put("username", "张三");
-        json.put("amount", "1000");
-        json.put("payType", "OUT");
-        json.put("balanceMode","IN");
+        json.put("username", name);
+        json.put("amount", "1");
+        json.put("payType", type1);
+        json.put("balanceMode", type2);
 
         message.setBody(json.toJSONString().getBytes("UTF-8"));
 
         //可以追加参数
-        Map<String,Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
 
         //记录发送消息到日志表
         EventProducer event = new EventProducer();
         event.setTopic(message.getTopic());
         event.setMsgKey(message.getKeys());
-        event.setMsgBody(new String(message.getBody(),"UTF-8"));
+        event.setMsgBody(new String(message.getBody(), "UTF-8"));
         event.setMsgExtra(JSONObject.toJSONString(map));
         event.setStatus(MessageStatus.PREPARED);
         event.setCreateTime(new Date());
-        eventProducerDao.save(event);
+        event = eventProducerDao.save(event);
+
+        message.putUserProperty("id", String.valueOf(event.getId()));
 
         //发送消息
         mqProducer.sendTransactionMessage(message, transactionExecuter, map);
-
-        System.out.println("=================消息发送===================");
     }
 
     @Test
@@ -152,16 +206,16 @@ public class PayServiceImplTest {
 
         List<MessageExt> list = queryResult.getMessageList();
 
-        for(MessageExt msg : list){
+        for (MessageExt msg : list) {
             System.out.println("===================================");
             Map<String, String> m = msg.getProperties();
             System.out.println("keys:" + m.keySet().toString());
-            System.out.println("values:"+m.values().toString());
-            System.out.println("message:"+msg.toString());
+            System.out.println("values:" + m.values().toString());
+            System.out.println("message:" + msg.toString());
             System.out.println("==-->内容: " + new String(msg.getBody(), "utf-8"));
             System.out.println("Prepared :" + msg.getPreparedTransactionOffset());
             LocalTransactionState ls = this.mqProducer.check(msg);
-            System.out.println("结果："+ls);
+            System.out.println("结果：" + ls);
         }
 
     }

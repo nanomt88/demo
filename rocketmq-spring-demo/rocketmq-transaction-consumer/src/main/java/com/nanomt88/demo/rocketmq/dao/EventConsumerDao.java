@@ -18,7 +18,8 @@ import java.util.List;
 @Repository
 public interface EventConsumerDao extends JpaRepository<EventConsumer, Long> {
 
-    @Query("select a.id from EventConsumer a where a.topic=:topic and a.createTime>=:createTime")
-    List<Long> findIdsByTopicAndCreateTimeAfter(@Param("topic") String topic , @Param("createTime")Date createTime);
+    @Query("select a.msgKey from EventConsumer a where a.topic=:topic and a.createTime >= :updateTime order by id desc")
+    List<String> findMsgKeyByTopicAndCreateTimeGreaterThan(@Param("topic") String topic , @Param("updateTime")Date updateTime);
 
+    EventConsumer findByTopicAndMsgKey(String topic, String msgKey);
 }

@@ -1,6 +1,8 @@
 package com.nanomt88.demo.rocketmq.entity;
 
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +17,7 @@ import java.util.Date;
  * @create 2017-06-19 21:56
  **/
 @Entity
+@Lazy(value=false)
 public class EventConsumer implements Serializable{
 
     private static final long serialVersionUID = -996634347904518089L;
@@ -41,7 +44,7 @@ public class EventConsumer implements Serializable{
 
     private Date createTime;
 
-    private Date updateTime;
+    private Date lastUpdateTime;
 
     public long getId() {
         return id;
@@ -91,11 +94,24 @@ public class EventConsumer implements Serializable{
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "EventConsumer{" +
+                "id=" + id +
+                ", topic='" + topic + '\'' +
+                ", msgKey='" + msgKey + '\'' +
+                ", msgBody='" + msgBody + '\'' +
+                ", msgExtra='" + msgExtra + '\'' +
+                ", createTime=" + createTime +
+                ", lastUpdateTime=" + lastUpdateTime +
+                '}';
     }
 }
