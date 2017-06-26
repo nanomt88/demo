@@ -79,7 +79,7 @@ public class EventConsumerServiceImpl implements EventConsumerService {
         }
 
         //获取上一次同步的位置
-        EventProducerTask task = eventProducerTaskDao.findOne(env.getProperty("rocketmq.sync.task.topic"));
+        EventProducerTask task = eventProducerTaskDao.findByTopicForUpdate(env.getProperty("rocketmq.sync.task.topic"));
         if(task == null){
             task = new EventProducerTask(env.getProperty("rocketmq.sync.task.topic"), new Date(0));
         }

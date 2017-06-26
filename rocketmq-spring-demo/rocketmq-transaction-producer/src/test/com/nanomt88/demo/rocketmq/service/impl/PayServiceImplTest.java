@@ -131,7 +131,7 @@ public class PayServiceImplTest {
 
         System.out.println("=================启动===================");
         long time = System.currentTimeMillis();
-        for (int j = 0; j < 500; j++) {
+        for (int j = 0; j < 1; j++) {
 
             sendNewMessage();
 
@@ -149,7 +149,7 @@ public class PayServiceImplTest {
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void sendNewMessage()throws UnsupportedEncodingException, MQClientException{
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
 
             //构造消息
             sendMessage("张三","IN",  "OUT");

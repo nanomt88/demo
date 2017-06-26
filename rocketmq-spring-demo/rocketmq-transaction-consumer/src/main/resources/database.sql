@@ -49,7 +49,7 @@ CREATE TABLE `t_event_consumer_task` (
 drop table  if EXISTS t_event_producer_task;
 CREATE TABLE `t_event_producer_task` (
   `topic` varchar(100) NOT NULL COMMENT '消息topic',
-  `update_time` int(20) NOT NULL COMMENT '最后修改时间',
+  `update_time` timestamp NOT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`topic`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='消费者同步消息记录表';
 

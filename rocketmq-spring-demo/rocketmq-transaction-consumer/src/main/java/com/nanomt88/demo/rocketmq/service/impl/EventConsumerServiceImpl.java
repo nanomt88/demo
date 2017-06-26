@@ -61,7 +61,7 @@ public class EventConsumerServiceImpl implements EventConsumerService {
 
     @Override
     public EventConsumerTask getEventConsumerTask(String topic) {
-        return eventConsumerTaskDao.findOne(topic);
+        return eventConsumerTaskDao.findByTopicForUpdate(topic);
     }
 
     @Override
