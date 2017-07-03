@@ -70,8 +70,9 @@ public class ApplicationConfig {
 		factory.setJpaDialect(new HibernateJpaDialect());
 
 		Properties props = new Properties();
-		props.put("hibernate.show_sql",true);
+		props.put("hibernate.show_sql",false);
 		props.put("hibernate.jdbc.batch_size", 50);
+		props.put("hiberante.cache.use_second_level_cache", false);
 		props.put("hibernate.physical_naming_strategy", "com.nanomt88.demo.rocketmq.ZLBNamingStrategy");
 
 //		hibernate5 以前，表映射使用一下的方式，hibernate5以后该参数一分为2：
