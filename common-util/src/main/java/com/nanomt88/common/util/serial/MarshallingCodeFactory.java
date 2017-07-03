@@ -1,4 +1,4 @@
-package com.nanomt88.demo.activemq.serial;
+package com.nanomt88.common.util.serial;
 
 import io.netty.handler.codec.marshalling.*;
 import org.jboss.marshalling.MarshallerFactory;

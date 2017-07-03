@@ -1,7 +1,7 @@
 /**
  * Copyright 2013 TPRI. All Rights Reserved.
  */
-package com.nanomt88.demo.activemq.http;
+package com.nanomt88.common.util.http;
 
 import java.io.IOException;
 import java.util.Map;

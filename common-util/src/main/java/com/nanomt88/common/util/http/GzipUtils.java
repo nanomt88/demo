@@ -1,4 +1,4 @@
-package com.nanomt88.demo.activemq.http;
+package com.nanomt88.common.util.http;
 
 import java.io.*;
 import java.util.zip.GZIPInputStream;

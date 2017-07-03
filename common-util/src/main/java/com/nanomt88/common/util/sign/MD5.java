@@ -1,4 +1,4 @@
-package com.nanomt88.demo.activemq.sign;
+package com.nanomt88.common.util.sign;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
