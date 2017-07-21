@@ -1,4 +1,4 @@
-package com.nanomt88.demo.zookeeper;
+package com.nanomt88.demo.zookeeper.sample;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.Watcher;
