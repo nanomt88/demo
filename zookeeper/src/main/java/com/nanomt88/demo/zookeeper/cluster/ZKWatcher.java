@@ -28,6 +28,9 @@ public class ZKWatcher implements Watcher{
      */
     private CountDownLatch connectedSemaphore = new CountDownLatch(1);
 
+    /**
+     * 保存父节点下面的所有子节点信息
+     */
     private List<String> childrenNodes = new ArrayList<>();
 
     /** zookeeper服务器地址 */
