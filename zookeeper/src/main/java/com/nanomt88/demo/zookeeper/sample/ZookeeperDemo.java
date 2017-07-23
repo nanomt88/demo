@@ -55,11 +55,16 @@ public class ZookeeperDemo {
         semaphore.await();
 
         //创建父节点
-//        zk.create("/test", "this is my first test Root".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,
-//                CreateMode.PERSISTENT);
+        //  CreateMode 标识有四种形式的目录节点，分别是：
+        //      PERSISTENT：持久化目录节点，这个目录节点存储的数据不会丢失；
+        //      PERSISTENT_SEQUENTIAL：顺序自动编号的目录节点，这种目录节点会根据当前已近存在的节点数自动加 1，然后返回给客户端已经成功创建的目录节点名；
+        //      EPHEMERAL：临时目录节点，一旦创建这个节点的客户端与服务器端口也就是 session 超时，这种节点会被自动删除；
+        //      EPHEMERAL_SEQUENTIAL：临时自动编号节点
+        zk.create("/test", "this is my first test Root".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.PERSISTENT);
 
-//        zk.create("/test/children", "this is test root children".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,
-//                CreateMode.PERSISTENT);
+        zk.create("/test/children", "this is test root children".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.PERSISTENT);
 
         //获取节点数据；   第二个参数 watch：为监控，除非需要监控 一般都为false
         byte[] data = zk.getData("/test", false, null);
@@ -68,6 +73,7 @@ public class ZookeeperDemo {
         System.out.println("/test children   :   " + zk.getChildren("/test", false));
 
         //修改节点值
+        //如果 version 为 -1 表示可以匹配任何版本
         zk.setData("/test", "modify test value".getBytes(), -1);
         byte[] data2 = zk.getData("/test", false, null);
         System.out.println("/test   :   " + new String(data2));
