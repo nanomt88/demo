@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+    <!-- 引入zc-com通用类属性注入配置文件 -->
+    <util:properties id="zcparams" location="classpath:params.properties"></util:properties>
+
+    <dubbo:application name="provider" owner="nanomt88" organization="dubbox"/>
+
+    <!-- zookeeper注册中心 -->
+    <dubbo:registry address="zookeeper://192.168.1.130:2181?backup=192.168.1.140:2181,192.168.1.141:2181"/>
+
+    <dubbo:annotation package="com.nanomt88.demo" />
+
+    <!-- kryo实现序列化  serialization="kryo" optimizer="bhz.utils.SerializationOptimizerImpl"-->
+    <dubbo:protocol name="dubbo"  serialization="kryo" optimizer="com.nanomt88.demo.util.SerializationOptimizerImpl" />
+
+    <!-- rest 设置， 端口和容器  -->
+    <dubbo:protocol name="rest" server="tomcat" port="8888" contextpath="provider" accepts="500" />
+
+
+</beans>
