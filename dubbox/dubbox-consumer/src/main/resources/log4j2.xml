@@ -11,7 +11,7 @@
         <Console name="console" target="SYSTEM_OUT">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="NEUTRAL" />
-            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL" />
+            <!--<ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL" />-->
             <!--输出日志的格式 -->
             <PatternLayout charset="UTF-8" pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} %L %M - %msg%xEx%n" />
         </Console>
@@ -66,8 +66,6 @@
             <AppenderRef ref="rollingErrorFile"/>
         </Root>
 
-        <!--   将RocketMQ的日志级别改为WARN    -->
-        <Logger name="RocketmqClient" level="WARN"/>
     </Loggers>
 
 </Configuration>

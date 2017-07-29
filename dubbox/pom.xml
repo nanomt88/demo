@@ -11,7 +11,23 @@
     <modules>
         <module>dubbox-provider</module>
         <module>dubbox-consumer</module>
+        <module>dubbox-common</module>
     </modules>
+
+    <repositories>
+        <repository>
+            <id>maven-central</id>
+            <name>Maven Official Repository</name>
+            <url>http://central.maven.org/maven2</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-central</id>
+            <url>http://central.maven.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
 
     <dependencies>
         <!--    引入dubbox -->
@@ -26,6 +42,38 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--    引入dubbox需要依赖的zkClient -->
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.3.6</version>
+            <exclusions>
+                <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    <!--    引入dubbox需要依赖的zkClient -->
+
+        <!--    Kyro序列化 start -->
+        <dependency>
+            <groupId>com.esotericsoftware.kryo</groupId>
+            <artifactId>kryo</artifactId>
+            <version>2.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.javakaffee</groupId>
+            <artifactId>kryo-serializers</artifactId>
+            <version>0.26</version>
+        </dependency>
+        <!--    Kyro序列化 end -->
 
         <!-- Logging use log4j2 start -->
         <dependency>
@@ -93,8 +141,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                     <encoding>UTF-8</encoding>
                     <compilerArguments>
                         <verbose/>

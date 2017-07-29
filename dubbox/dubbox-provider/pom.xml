@@ -24,6 +24,13 @@
     </build>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.nanomt88.demo</groupId>
+            <artifactId>dubbox-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <!--    使用REST风格远程调用需要依赖    -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
@@ -40,8 +47,26 @@
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
         </dependency>
+
+        <!-- 如果要使用json序列化 -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>3.0.7.Final</version>
+        </dependency>
         <!--    使用REST风格远程调用需要依赖    -->
 
+        <!-- 如果要使用tomcat server -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>8.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-juli</artifactId>
+            <version>8.0.11</version>
+        </dependency>
 
     </dependencies>
 

@@ -17,12 +17,12 @@
     <dubbo:application name="provider" owner="nanomt88" organization="dubbox"/>
 
     <!-- zookeeper注册中心 -->
-    <dubbo:registry address="zookeeper://192.168.1.130:2181?backup=192.168.1.140:2181,192.168.1.141:2181"/>
+    <dubbo:registry address="zookeeper://192.168.1.140:2181?backup=192.168.1.130:2181,192.168.1.141:2181"/>
 
     <dubbo:annotation package="com.nanomt88.demo" />
 
     <!-- kryo实现序列化  serialization="kryo" optimizer="bhz.utils.SerializationOptimizerImpl"-->
-    <dubbo:protocol name="dubbo"  serialization="kryo" optimizer="com.nanomt88.demo.util.SerializationOptimizerImpl" />
+    <dubbo:protocol name="dubbo"  serialization="kryo" optimizer="com.nanomt88.demo.util.SerializationOptionizerImpl" />
 
     <!-- rest 设置， 端口和容器  -->
     <dubbo:protocol name="rest" server="tomcat" port="8888" contextpath="provider" accepts="500" />

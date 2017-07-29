@@ -1,10 +1,14 @@
 package com.nanomt88.demo.common;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+
 /**
  * @author nanomt88@gmail.com
  * @create 2017-07-24 7:42
  **/
-public class User {
+@XmlRootElement
+public class User implements Serializable{
 
     private Long id;
     private String name;
