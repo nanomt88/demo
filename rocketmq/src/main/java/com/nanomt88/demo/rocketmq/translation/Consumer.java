@@ -33,6 +33,7 @@ public class Consumer {
          */
         consumer.setConsumeMessageBatchMaxSize(1);
 
+        consumer.setConsumeConcurrentlyMaxSpan(1000);
 
         consumer.subscribe("TransactionTopic", "*");
         //consumer.subscribe("TopicTest2", "*");

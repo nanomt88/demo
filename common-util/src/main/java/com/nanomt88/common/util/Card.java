@@ -2,6 +2,7 @@ package com.nanomt88.common.util;
 
 import java.math.BigInteger;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author nanomt88@gmail.com
@@ -166,11 +167,16 @@ public class Card {
     }
 
     public static void main(String[] args) {
-        BigInteger i1 = hexToBigInteger("9FFFFFFFFFFFFFFF");
-        System.out.println(i1);
-        BigInteger i2 = hexToBigInteger("1FFFFFFFFFF");
-        System.out.println(i2);
-        System.out.println(i1.subtract(i2));
+        for (int i = 0; i < 20; i++) {
+
+            int random = ThreadLocalRandom.current().nextInt(10);
+            System.out.println(random);
+        }
+//        BigInteger i1 = hexToBigInteger("9FFFFFFFFFFFFFFF");
+//        System.out.println(i1);
+//        BigInteger i2 = hexToBigInteger("1FFFFFFFFFF");
+//        System.out.println(i2);
+//        System.out.println(i1.subtract(i2));
 //        System.out.println("123456789012".substring(0,10));
 //        testAll();
 //        test1();
