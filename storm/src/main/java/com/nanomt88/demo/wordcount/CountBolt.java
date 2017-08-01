@@ -19,7 +19,7 @@ import java.util.Map;
  * @author nanomt88@gmail.com
  * @create 2017-08-01 7:57
  **/
-public class WordBolt implements IRichBolt {
+public class CountBolt implements IRichBolt {
 
     private Map<String,Integer> map = null;
 
