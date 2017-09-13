@@ -1,5 +1,6 @@
 package com.nanomt88.risk.util;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import redis.clients.jedis.Jedis;
 
@@ -21,5 +22,13 @@ public class RedisOpsUtil {
 
     public void set(String id, Map<String, Object> map){
         jedis.set(id, JSONObject.toJSONString(map));
+    }
+
+    public <T> T get(String key, Class<T> clazz){
+        if(clazz == String.class)
+            return (T) jedis.get(key);
+        else{
+            return JSON.parseObject(jedis.get(key), clazz);
+        }
     }
 }
