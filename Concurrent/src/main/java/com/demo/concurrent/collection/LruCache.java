@@ -1,4 +1,4 @@
-package demo.client;
+package com.demo.concurrent.collection;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
