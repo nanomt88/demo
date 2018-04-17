@@ -1,4 +1,4 @@
-package com.nanomt88.common.util.sign;
+package com.nanomt88.common.util.security;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
