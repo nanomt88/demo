@@ -1,5 +1,7 @@
 package com.nanomt88.common.util.security;
 
+import com.nanomt88.common.RSAUtil;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -27,6 +29,8 @@ public class RSAUtils {
      */
     private static final String SIGN_ALGORITHM = "SHA256withRSA";
 
+    private static final String RSA = "RSA";
+
     /**
      * 初始化秘钥
      *
@@ -45,14 +49,14 @@ public class RSAUtils {
     public static KeyPair initKey(int length) {
         KeyPairGenerator keyPairGenerator = null;
         try {
-            keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator = KeyPairGenerator.getInstance(RSA);
             keyPairGenerator.initialize(length);
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
             return keyPair;
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            throw new RuntimeException("RSA 初始化秘钥异常：" + e.getMessage());
         }
-        return null;
     }
 
     /**
@@ -105,16 +109,18 @@ public class RSAUtils {
 
     /**
      * 签名
+     *
      * @param content
      * @param privateKey
      * @return
      */
-    public static String sign(String content, PrivateKey privateKey){
-        return sign(content,privateKey,null);
+    public static String sign(String content, PrivateKey privateKey) {
+        return sign(content, privateKey, null);
     }
 
     /**
      * 签名
+     *
      * @param content
      * @param privateKey
      * @param charset
@@ -130,27 +136,31 @@ public class RSAUtils {
             return Base64.encodeBase64String(sign);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            throw new RuntimeException("RSA 计算签名时异常：" + e.getMessage());
         } catch (SignatureException e) {
             e.printStackTrace();
+            throw new RuntimeException("RSA 计算签名时异常：" + e.getMessage());
         } catch (InvalidKeyException e) {
             e.printStackTrace();
+            throw new RuntimeException("RSA 计算签名时异常：" + e.getMessage());
         }
-        return null;
     }
 
     /**
      * 验签
+     *
      * @param content
      * @param sign
      * @param publicKey
      * @return
      */
-    public static boolean verify(String content, String sign, PublicKey publicKey){
-        return verify(content, sign, publicKey,null);
+    public static boolean verify(String content, String sign, PublicKey publicKey) {
+        return verify(content, sign, publicKey, null);
     }
 
     /**
      * 验签
+     *
      * @param content
      * @param sign
      * @param publicKey
@@ -161,18 +171,20 @@ public class RSAUtils {
         //公钥验签
         Signature signature2 = null;
         try {
-            signature2 = Signature.getInstance("SHA256withRSA");
+            signature2 = Signature.getInstance(SIGN_ALGORITHM);
             signature2.initVerify(publicKey);
             signature2.update(StringUtils.getContentBytes(content, charset));
             return signature2.verify(Base64.decodeBase64String(sign));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            throw new RuntimeException("RSA 验证签名时异常：" + e.getMessage());
         } catch (SignatureException e) {
             e.printStackTrace();
+            throw new RuntimeException("RSA 验证签名时异常：" + e.getMessage());
         } catch (InvalidKeyException e) {
             e.printStackTrace();
+            throw new RuntimeException("RSA 验证签名时异常：" + e.getMessage());
         }
-        return false;
     }
 
     private static byte[] doFinal(int mode, byte[] content, Key key) {
@@ -182,17 +194,9 @@ public class RSAUtils {
             cipher.init(mode, key);
             byte[] result = cipher.doFinal(content);
             return result;
-        } catch (NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
+            throw new RuntimeException("RSA 加解密时异常：" + e.getMessage());
         }
-        return null;
     }
 }

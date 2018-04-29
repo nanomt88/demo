@@ -43,29 +43,14 @@ public class HmacUtils {
         try {
             mac = Mac.getInstance(restoreSecreKey.getAlgorithm());
             mac.init(restoreSecreKey);
-            byte[] hmacMessage = mac.doFinal(getContentBytes(content, charset));
+            byte[] hmacMessage = mac.doFinal(StringUtils.getContentBytes(content, charset));
             return StringUtils.byteArrayToHex(hmacMessage);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            throw new RuntimeException("hmac计算摘要时异常：" + e.getMessage());
         } catch (InvalidKeyException e) {
             e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * @param content
-     * @param charset
-     * @return
-     */
-    private static byte[] getContentBytes(String content, String charset) {
-        if (charset == null || "".equals(charset)) {
-            return content.getBytes();
-        }
-        try {
-            return content.getBytes(charset);
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("MD5签名过程中出现错误,指定的编码集不对,您目前指定的编码集是:" + charset);
+            throw new RuntimeException("hmac计算摘要时异常：" + e.getMessage());
         }
     }
 }

@@ -27,6 +27,7 @@ public class AESUtils {
      * AES 加密算法
      */
     private static final String ALGORITHM = "AES/CBC/PKCS5Padding";
+    private static final String AES = "AES";
 
     /**
      * aes 加密
@@ -72,16 +73,7 @@ public class AESUtils {
      * @return
      */
     public static String decrypt(String content, byte[] key, String charset) {
-        try {
-            if (charset == null || "".equals(charset)) {
-                return new String(doFinal(Cipher.DECRYPT_MODE, Base64.decodeBase64String(content), key, charset));
-            } else {
-                return new String(doFinal(Cipher.DECRYPT_MODE, Base64.decodeBase64String(content), key, charset), charset);
-            }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return StringUtils.toString(doFinal(Cipher.DECRYPT_MODE, Base64.decodeBase64String(content), key, charset), charset);
     }
 
     public static byte[] initKey() {
@@ -92,7 +84,7 @@ public class AESUtils {
         //初始化KeyGenerator
         KeyGenerator keyGenerator = null;
         try {
-            keyGenerator = KeyGenerator.getInstance("AES");
+            keyGenerator = KeyGenerator.getInstance(AES);
             //注意因默认jdk限制，不能使用256位长度，需要替换${java_home}\jre6\lib\security
             //目录下的local_policy.jar、US_export_policy.jar（使用policy/unlimited下的即可）
             keyGenerator.init(length <= 0 ? 256 : length);
@@ -101,14 +93,14 @@ public class AESUtils {
             return secretKey.getEncoded();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            throw new RuntimeException("AES 初始化秘钥异常：" + e.getMessage());
         }
-        return null;
     }
 
     private static byte[] doFinal(int algorithm, byte[] content, byte[] key, String charset) {
         IvParameterSpec iv = new IvParameterSpec(IVPARAMETER.getBytes());
         //还原秘钥
-        SecretKey secretKey = new SecretKeySpec(key, "AES");
+        SecretKey secretKey = new SecretKeySpec(key, AES);
         //加密 不指定时默认为：AES/ECB/PKCS5Padding（算法/模式/补码方式）
         Cipher cipher = null;
         try {
@@ -117,19 +109,9 @@ public class AESUtils {
             cipher.init(algorithm, secretKey, iv);
             byte[] result = cipher.doFinal(content);
             return result;
-        } catch (NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
-            e.printStackTrace();
+            throw new RuntimeException("AES 加解密 异常：" + e.getMessage());
         }
-        return null;
     }
 }

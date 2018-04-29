@@ -6,7 +6,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.*;
 
 /**
- *  DES 对称加密 工具类
+ * DES 对称加密 工具类
  *
  * @author hongxudong
  * @create 2018-04-26 11:47
@@ -19,12 +19,12 @@ public class DESUtils {
     //偏移量，长度必须为8位
     private static final String IVPARAMETER = "12345678";
 
-    public static SecretKey initKey(){
+    public static SecretKey initKey() {
         SecureRandom secureRandom = new SecureRandom();
         return initKey(secureRandom);
     }
 
-    public static SecretKey initKey(SecureRandom secureRandom){
+    public static SecretKey initKey(SecureRandom secureRandom) {
         KeyGenerator keyGenerator = null;
         try {
             keyGenerator = KeyGenerator.getInstance(DES);
@@ -34,15 +34,15 @@ public class DESUtils {
             return secretKey;
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            throw new RuntimeException("DES 初始化秘钥异常：" + e.getMessage());
         }
-        return null;
     }
 
     /**
      * 加密
      *
-     * @param content   待加密明文
-     * @param key 公钥
+     * @param content 待加密明文
+     * @param key     公钥
      * @return
      */
     public static String encrypt(String content, Key key) {
@@ -52,7 +52,7 @@ public class DESUtils {
     /**
      * 加密
      *
-     * @param content   待加密明文
+     * @param content  待加密明文
      * @param keyBytes 公钥
      * @return
      */
@@ -78,16 +78,16 @@ public class DESUtils {
      * @param keyBytes
      * @return
      */
-    public static String decrypt(String content,  byte[] keyBytes) {
+    public static String decrypt(String content, byte[] keyBytes) {
         return decrypt(content, new SecretKeySpec(keyBytes, DES), null);
     }
 
     /**
      * 加密
      *
-     * @param content   待加密明文
-     * @param key 公钥
-     * @param charset   待加密明文和加密密文使用的字符集
+     * @param content 待加密明文
+     * @param key     公钥
+     * @param charset 待加密明文和加密密文使用的字符集
      * @return
      */
     public static String encrypt(String content, Key key, String charset) {
@@ -98,9 +98,9 @@ public class DESUtils {
     /**
      * 解密
      *
-     * @param content    待解密密文
-     * @param key 公钥
-     * @param charset    待解密密文和原文使用的字符集
+     * @param content 待解密密文
+     * @param key     公钥
+     * @param charset 待解密密文和原文使用的字符集
      * @return
      */
     public static String decrypt(String content, Key key, String charset) {
@@ -118,19 +118,9 @@ public class DESUtils {
             cipher.init(mode, key, iv);
             byte[] result = cipher.doFinal(content);
             return result;
-        } catch (NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
-            e.printStackTrace();
+            throw new RuntimeException("DES 加解密 异常：" + e.getMessage());
         }
-        return null;
     }
 }

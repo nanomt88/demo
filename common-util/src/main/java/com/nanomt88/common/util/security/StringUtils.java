@@ -41,7 +41,7 @@ public class StringUtils {
         }
     }
 
-    public static String toString(byte[] bytes, String charset){
+    public static String toString(byte[] bytes, String charset) {
         if (charset == null || "".equals(charset)) {
             return new String(bytes);
         }

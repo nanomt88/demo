@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 
 /**
- *  SHA 摘要算法工具类
+ * SHA 摘要算法工具类
  *
  * @author hongxudong
  * @create 2018-04-25 15:10
@@ -17,7 +17,8 @@ public class SHAUtils {
     private static String SHA1 = "SHA-1";
 
     /**
-     *  计算sha256值
+     * 计算sha256值
+     *
      * @param content
      * @return
      */
@@ -26,17 +27,19 @@ public class SHAUtils {
     }
 
     /**
-     *  计算sha256值
+     * 计算sha256值
+     *
      * @param content
      * @param charset
      * @return
      */
-    public static String sha256(String content , String charset) {
+    public static String sha256(String content, String charset) {
         return digest(SHA256, content, charset);
     }
 
     /**
      * 计算 SHA-1 值
+     *
      * @param content
      * @return
      */
@@ -46,6 +49,7 @@ public class SHAUtils {
 
     /**
      * 计算 SHA-1 值
+     *
      * @param content
      * @param charset
      * @return
@@ -56,6 +60,7 @@ public class SHAUtils {
 
     /**
      * 验证 SHA-1 值 是否相等
+     *
      * @param md5String
      * @param content
      * @param charset
@@ -69,6 +74,7 @@ public class SHAUtils {
 
     /**
      * 验证 SHA-1 值 是否相等
+     *
      * @param md5String
      * @param content
      * @return
@@ -79,6 +85,7 @@ public class SHAUtils {
 
     /**
      * 验证 SHA-256 值 是否相等
+     *
      * @param md5String
      * @param content
      * @param charset
@@ -92,6 +99,7 @@ public class SHAUtils {
 
     /**
      * 验证 SHA-256 值 是否相等
+     *
      * @param md5String
      * @param content
      * @return
@@ -100,18 +108,18 @@ public class SHAUtils {
         return verifySHA256(md5String, content, null);
     }
 
-    private static String digest(String algorithm, String content, String charset){
+    private static String digest(String algorithm, String content, String charset) {
         assert content != null;
         MessageDigest md;
         try {
             md = MessageDigest.getInstance(algorithm);
-            byte[] digest = md.digest( getContentBytes(content, charset));
+            byte[] digest = md.digest(getContentBytes(content, charset));
             String sha = StringUtils.byteArrayToHex(digest);
             return sha;
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            throw new RuntimeException("SHA 计算摘要时异常：" + e.getMessage());
         }
-        return null;
     }
 
     /**
@@ -128,7 +136,7 @@ public class SHAUtils {
         try {
             return content.getBytes(charset);
         } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("MD5签名过程中出现错误,指定的编码集不对,您目前指定的编码集是:" + charset);
+            throw new RuntimeException("SHA 计算摘要过程中出现错误,指定的编码集不对,您目前指定的编码集是:" + charset);
         }
     }
 }

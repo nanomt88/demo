@@ -8,11 +8,11 @@ package com.nanomt88.common.util.security;
  **/
 public class Base64 {
 
-    public static String encodeBase64String(byte[] content){
+    public static String encodeBase64String(byte[] content) {
         return java.util.Base64.getEncoder().encodeToString(content);
     }
 
-    public static byte[] decodeBase64String(String content){
+    public static byte[] decodeBase64String(String content) {
         return java.util.Base64.getDecoder().decode(content);
     }
 }
