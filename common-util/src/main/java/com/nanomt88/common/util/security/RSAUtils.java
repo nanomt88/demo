@@ -1,15 +1,11 @@
 package com.nanomt88.common.util.security;
 
-import com.nanomt88.common.RSAUtil;
 
-import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import java.security.*;
 
 /**
- * ${DESCRIPTION}
+ *  RSA 工具类
  *
  * @author hongxudong
  * @create 2018-04-25 17:13

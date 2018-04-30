@@ -7,6 +7,7 @@ import javax.crypto.SecretKey;
 
 import java.security.NoSuchAlgorithmException;
 
+import static com.nanomt88.common.util.security.HmacUtils.initKey;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -26,19 +27,5 @@ class HmacUtilsTest {
         System.out.println(HmacUtils.hmacSHA256("123", initKey()));
     }
 
-    private byte[] initKey(){
-        //初始化KeyGenerator
-        KeyGenerator keyGenerator = null;
-        try {
-            keyGenerator = KeyGenerator.getInstance("HmacSHA256");
-            //产生秘钥
-            SecretKey secretKey = keyGenerator.generateKey();
-            //获取秘钥
-            byte[] key = secretKey.getEncoded();
-            return key;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 }

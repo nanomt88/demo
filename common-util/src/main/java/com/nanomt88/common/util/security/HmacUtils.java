@@ -1,8 +1,9 @@
 package com.nanomt88.common.util.security;
 
+import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -17,6 +18,21 @@ public class HmacUtils {
     private static final String HMACSHA256 = "HmacSHA256";
     private static final String HMACMD5 = "HmacMD5";
 
+    public static byte[] initKey(){
+        //初始化KeyGenerator
+        KeyGenerator keyGenerator = null;
+        try {
+            keyGenerator = KeyGenerator.getInstance("HmacSHA256");
+            //产生秘钥
+            SecretKey secretKey = keyGenerator.generateKey();
+            //获取秘钥
+            byte[] key = secretKey.getEncoded();
+            return key;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            throw new RuntimeException("HMAC 初始化秘钥异常：" + e.getMessage());
+        }
+    }
 
     public static String hmacSHA256(String content, byte[] key) {
         return hmac(HMACSHA256, content, key, null);

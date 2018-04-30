@@ -1,7 +1,6 @@
 package com.nanomt88.common.util.security;
 
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
