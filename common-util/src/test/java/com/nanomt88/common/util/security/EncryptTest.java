@@ -104,7 +104,9 @@ public class EncryptTest {
         RSAPublicKey rsaPublicKey = (RSAPublicKey) keyPair.getPublic();
         RSAPrivateKey rsaPrivateKey = (RSAPrivateKey) keyPair.getPrivate();
         System.out.println("公钥：" + Base64.encodeBase64String(rsaPublicKey.getEncoded()));
+        System.out.println(rsaPublicKey.getFormat());
         System.out.println("私钥：" + Base64.encodeBase64String(rsaPrivateKey.getEncoded()));
+        System.out.println(rsaPrivateKey.getFormat());
         //公钥加密
         X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");

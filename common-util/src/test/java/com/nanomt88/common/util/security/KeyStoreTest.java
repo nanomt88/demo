@@ -27,7 +27,7 @@ import static org.junit.Assert.assertArrayEquals;
  * @version 1.0
  * @since 1.0
  */
-public class Test{
+public class KeyStoreTest {
 
     /**
      * Java密钥库(Java Key Store，JKS)KEY_STORE
@@ -445,8 +445,8 @@ public class Test{
 class CertificateCoderTest {
     private static String password = "111111";
     private static String alias = "lakala";
-    private static String KEYSTOREPATH_PRIVATE = Test.class.getResource("/").getPath() + "lakala.jks";
-    private static String KEYSTOREPATH_PUBLIC = Test.class.getResource("/").getPath() + "lakala.jks";
+    private static String KEYSTOREPATH_PRIVATE = KeyStoreTest.class.getResource("/").getPath() + "lakala.jks";
+    private static String KEYSTOREPATH_PUBLIC = KeyStoreTest.class.getResource("/").getPath() + "lakala.jks";
 
 
     public static void main(String[] args) throws Exception{
@@ -455,10 +455,10 @@ class CertificateCoderTest {
         String inputStr = "Ceritifcate";
         byte[] data = inputStr.getBytes();
 
-        byte[] encrypt = Test.encryptByPublicKey(data,
+        byte[] encrypt = KeyStoreTest.encryptByPublicKey(data,
                 KEYSTOREPATH_PUBLIC, alias, password);
         System.out.println("密文：" + Base64.getEncoder().encodeToString(encrypt));
-        byte[] decrypt = Test.decryptByPrivateKey(encrypt,
+        byte[] decrypt = KeyStoreTest.decryptByPrivateKey(encrypt,
                 KEYSTOREPATH_PUBLIC, alias, password);
         String outputStr = new String(decrypt);
 
