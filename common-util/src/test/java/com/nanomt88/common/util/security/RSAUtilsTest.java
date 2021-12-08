@@ -15,11 +15,17 @@ import static com.nanomt88.common.util.security.RSAUtils.*;
 class RSAUtilsTest {
     @Test
     void encrypt1() {
-        String str = "123";
+        String str = "1111122222";
         KeyPair keyPair = initKey();
         String encrypt = encrypt(str, keyPair.getPublic());
         String decrypt = decrypt(encrypt, keyPair.getPrivate());
+
         assert  str.equals(decrypt);
+
+        //私钥可以加密，但是有数据长度限制，不能超过秘钥长度-padding
+        String encrypt2 = encrypt(str, keyPair.getPrivate());
+        String decrypt2 = decrypt(encrypt2, keyPair.getPublic());
+        assert str.equals(decrypt2);
     }
 
     @Test

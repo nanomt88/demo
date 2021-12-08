@@ -12,6 +12,24 @@
 
     <dependencies>
 
+        <!--  bc加解密工具类 start -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.69</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>1.69</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bctls-jdk15on</artifactId>
+            <version>1.69</version>
+        </dependency>
+        <!--  bc加解密工具类 end  -->
+
         <!--  apache httpclient start  -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

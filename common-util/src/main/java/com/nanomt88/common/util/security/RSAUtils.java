@@ -1,6 +1,8 @@
 package com.nanomt88.common.util.security;
 
 
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 import javax.crypto.Cipher;
 import java.security.*;
 
@@ -19,7 +21,8 @@ public class RSAUtils {
     /**
      * 加密算法
      */
-    private static final String ENCRYPT_ALGORITHM = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding";
+//    private static final String ENCRYPT_ALGORITHM = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"; //该算法不支持公钥签名和私钥加密
+    private static final String ENCRYPT_ALGORITHM = "RSA/ECB/PKCS1Padding";
     /**
      * 签名算法
      */
@@ -66,6 +69,12 @@ public class RSAUtils {
         return encrypt(content, publicKey, null);
     }
 
+    @Deprecated
+    public static String encrypt(String content, PrivateKey privateKey) {
+        return Base64.encodeBase64String(
+                doFinal(Cipher.ENCRYPT_MODE, StringUtils.getContentBytes(content, "UTF-8"), privateKey));
+    }
+
     /**
      * 解密
      *
@@ -77,6 +86,12 @@ public class RSAUtils {
         return decrypt(content, privateKey, null);
     }
 
+    @Deprecated
+    public static String decrypt(String content, PublicKey publicKey) {
+        return StringUtils.toString(
+                doFinal(Cipher.DECRYPT_MODE, Base64.decodeBase64String(content), publicKey), "UTF-8");
+    }
+
     /**
      * 加密
      *
@@ -85,7 +100,7 @@ public class RSAUtils {
      * @param charset   待加密明文和加密密文使用的字符集
      * @return
      */
-    public static String encrypt(String content, PublicKey publicKey, String charset) {
+    public static String  encrypt(String content, PublicKey publicKey, String charset) {
         return Base64.encodeBase64String(
                 doFinal(Cipher.ENCRYPT_MODE, StringUtils.getContentBytes(content, charset), publicKey));
     }
@@ -186,7 +201,9 @@ public class RSAUtils {
     private static byte[] doFinal(int mode, byte[] content, Key key) {
         Cipher cipher;
         try {
-            cipher = Cipher.getInstance(ENCRYPT_ALGORITHM);
+            Security.addProvider(new BouncyCastleProvider());
+//            cipher = Cipher.getInstance(ENCRYPT_ALGORITHM,"BC");
+            cipher = Cipher.getInstance(ENCRYPT_ALGORITHM,"BC");
             cipher.init(mode, key);
             byte[] result = cipher.doFinal(content);
             return result;
