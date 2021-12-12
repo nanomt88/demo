@@ -3,7 +3,7 @@ package com.demo.multi;
 import com.lmax.disruptor.RingBuffer;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/10 上午7:47
  * @Description:   生产者
  */

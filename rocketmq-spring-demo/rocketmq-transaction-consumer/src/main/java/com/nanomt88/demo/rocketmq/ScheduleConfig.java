@@ -14,7 +14,7 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import java.util.concurrent.Executor;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/5/19 下午7:56
  * @Description: //TODO
  */

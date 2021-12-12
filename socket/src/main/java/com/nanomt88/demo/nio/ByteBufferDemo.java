@@ -3,7 +3,7 @@ package com.nanomt88.demo.nio;
 import java.nio.IntBuffer;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/15 下午4:13
  * @Description: //TODO
  */

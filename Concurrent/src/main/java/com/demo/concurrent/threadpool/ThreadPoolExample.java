@@ -3,7 +3,7 @@ package com.demo.concurrent.threadpool;
 import java.util.concurrent.*;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/7 上午12:56
  * @Description: //TODO
  */

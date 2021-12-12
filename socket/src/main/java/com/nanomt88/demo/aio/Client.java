@@ -8,7 +8,7 @@ import java.nio.channels.AsynchronousSocketChannel;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/16 上午8:00
  * @Description: //TODO
  */

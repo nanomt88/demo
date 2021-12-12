@@ -1,7 +1,7 @@
 package com.demo.concurrent.future;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/4 上午10:37
  * @Description: //TODO
  */

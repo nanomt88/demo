@@ -9,7 +9,7 @@ import java.security.spec.X509EncodedKeySpec;
 /**
  * DSA 非对称加密 工具类
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-26 11:47
  **/
 public class DSAUtils {

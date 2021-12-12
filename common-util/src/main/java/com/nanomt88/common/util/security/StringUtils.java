@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-25 14:54
  **/
 public class StringUtils {

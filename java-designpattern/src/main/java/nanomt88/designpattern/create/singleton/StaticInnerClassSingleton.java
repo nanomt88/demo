@@ -4,7 +4,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/5 上午10:01
  * @Description:  静态内部类 ，
  *                  优点： 只加载一次，而且是懒加载

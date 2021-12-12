@@ -1,7 +1,7 @@
 package nanomt88.designpattern.create.builder;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/5 下午4:04
  * @Description: //TODO
  */

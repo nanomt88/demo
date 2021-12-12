@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/2 下午4:27
  * @Description:  自己写一个简单的 LinkedBlockingQueue 小例子
  */

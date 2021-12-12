@@ -3,7 +3,7 @@ package com.nanomt88.demo;
 import java.util.Vector;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/5/6 下午9:21
  * @Description:    堆内存溢出实验
  *

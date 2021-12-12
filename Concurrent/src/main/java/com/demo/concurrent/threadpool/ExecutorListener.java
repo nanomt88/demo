@@ -3,7 +3,7 @@ package com.demo.concurrent.threadpool;
 /**
  * 
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2012-10-29
  * @Description: 
  *					在Executor执行过程中，管理Executor的执行过程

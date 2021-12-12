@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @Copyright (c) Lictecs
- * @author xudong.hong@lictecs.com
+ * @author nanomt88@gmail.com
  * @Date 2012-11-3
  * @Description: 任务缓存接口，任务执行过程中，
  *               当从队列中取出相应任务之后缓存起来，

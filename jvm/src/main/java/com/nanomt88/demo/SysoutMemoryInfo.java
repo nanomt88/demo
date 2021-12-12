@@ -1,7 +1,7 @@
 package com.nanomt88.demo;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/5/6 下午6:54
  * @Description:
  *      打印系统内存信息

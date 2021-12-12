@@ -4,7 +4,7 @@ import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/4 上午8:47
  * @Description: //TODO
  */

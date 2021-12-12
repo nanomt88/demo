@@ -3,7 +3,7 @@ package com.demo.concurrent.threadpool;
 /**
  * 
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2012-10-29
  * @Description: 
  *					业务接口，子类AbstractCallable扩展了设置任务优先级、监听器的功能

@@ -3,7 +3,7 @@ package nanomt88.designpattern.proxy;
 /**
  *  北漂屌丝
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-03-10 20:15
  **/
 public class BeijingLoser implements Renter{

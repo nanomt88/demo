@@ -9,7 +9,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import java.util.Timer;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/7/28 下午3:03
  * @Description: //TODO
  */

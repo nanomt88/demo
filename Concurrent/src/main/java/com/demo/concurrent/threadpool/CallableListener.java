@@ -2,7 +2,7 @@ package com.demo.concurrent.threadpool;
 
 /**
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2012-11-2
  * @Description: 
  *					添加对任务执行失败、异常的处理

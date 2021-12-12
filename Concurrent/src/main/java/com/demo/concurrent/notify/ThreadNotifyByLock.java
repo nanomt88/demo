@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/2 下午4:06
  * @Description: 当调用 Object.wait()方法的时候，会释放当前的锁；调用Object.notify()并不会释放当前的锁
  *  等到当前线程执行完毕后才会释放锁

@@ -1,7 +1,7 @@
 package nanomt88.designpattern.create.singleton;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/5 上午10:07
  * @Description:    懒汉式 ： 双重检查
  */

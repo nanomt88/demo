@@ -23,8 +23,8 @@ public class ProviderTest {
 
         MailMessage msg = new MailMessage();
         msg.setContent("from active demo");
-        msg.setFrom("xuelang0734@126.com");
-        msg.setTo("87707918@qq.com");
+        msg.setFrom("123@126.com");
+        msg.setTo("123@qq.com");
         msg.setContent("demo test mail");
         provider.sendEmail(msg);
     }

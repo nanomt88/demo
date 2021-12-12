@@ -7,7 +7,7 @@ import java.util.UUID;
 import java.util.concurrent.*;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/10 上午7:33
  * @Description: //TODO
  */

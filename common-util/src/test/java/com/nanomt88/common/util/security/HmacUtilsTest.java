@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-25 15:57
  **/
 class HmacUtilsTest {

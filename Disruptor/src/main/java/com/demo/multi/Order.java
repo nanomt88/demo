@@ -3,7 +3,7 @@ package com.demo.multi;
 import java.io.Serializable;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/10 上午7:36
  * @Description: //TODO
  */

@@ -3,7 +3,7 @@ package nanomt88.designpattern.create.factory.example;
 import java.util.Scanner;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/5 上午8:09
  * @Description:  简单工厂的示例，实例化四个操作类型的运算符的时候，使用简单工厂进行实例
  *          调用者不需要关心具体实现逻辑

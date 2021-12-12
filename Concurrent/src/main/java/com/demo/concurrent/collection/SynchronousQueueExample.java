@@ -3,7 +3,7 @@ package com.demo.concurrent.collection;
 import java.util.concurrent.SynchronousQueue;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/6 下午10:06
  * @Description: //TODO
  */

@@ -2,7 +2,7 @@ package com.demo.concurrent.threadpool;
 
 /**
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2012-11-3
  * @Description: 
  *					线程池使用简单样例

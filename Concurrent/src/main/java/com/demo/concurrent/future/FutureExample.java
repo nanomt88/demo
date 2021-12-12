@@ -4,7 +4,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.Callable;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/4 下午2:19
  * @Description: 使用 jdk自带的Future 实现future模式
  */

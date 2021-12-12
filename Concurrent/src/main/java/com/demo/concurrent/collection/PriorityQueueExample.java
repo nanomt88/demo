@@ -3,7 +3,7 @@ package com.demo.concurrent.collection;
 import java.util.concurrent.PriorityBlockingQueue;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/2 下午10:14
  * @Description:
  */

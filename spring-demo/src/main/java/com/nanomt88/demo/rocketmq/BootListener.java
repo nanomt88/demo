@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/27 下午6:39
  * @Description:    启动后加载数据到 lucene中
  */

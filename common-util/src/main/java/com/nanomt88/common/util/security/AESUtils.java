@@ -11,7 +11,7 @@ import static com.nanomt88.common.util.security.StringUtils.getContentBytes;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-25 16:00
  **/
 public class AESUtils {

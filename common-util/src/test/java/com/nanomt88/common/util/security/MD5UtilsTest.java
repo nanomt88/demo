@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-25 14:59
  **/
 public class MD5UtilsTest {

@@ -3,7 +3,7 @@ package com.nanomt88.demo.rocketmq.service;
 import com.nanomt88.demo.rocketmq.entity.OrderPdeduct;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/6/15 下午3:26
  * @Description: //TODO
  */

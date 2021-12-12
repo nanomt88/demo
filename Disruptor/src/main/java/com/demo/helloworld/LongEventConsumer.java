@@ -3,7 +3,7 @@ package com.demo.helloworld;
 import com.lmax.disruptor.EventHandler;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/9 上午9:17
  * @Description:
  *           这是一个事件的消费者，也就是一个事件处理器。这个事件处理器简单的把传递过来的值打印到控制台

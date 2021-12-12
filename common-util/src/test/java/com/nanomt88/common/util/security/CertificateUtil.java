@@ -16,7 +16,7 @@ import java.util.Iterator;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-16 7:41
  **/
 public class CertificateUtil {

@@ -3,7 +3,7 @@ package nanomt88.designpattern.create.singleton;
 import java.io.Serializable;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/5 上午10:23
  * @Description:
  *          枚举类型的单例类，最优方式

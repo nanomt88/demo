@@ -3,7 +3,7 @@ package com.demo.concurrent.product;
 import java.util.concurrent.BlockingQueue;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/4 下午3:06
  * @Description: //TODO
  */

@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 /**
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2012-10-30
  * @Description: 
  *					工作线程类

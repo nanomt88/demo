@@ -1,7 +1,7 @@
 package nanomt88.designpattern.structure.decorator;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/6 上午9:29
  * @Description: //TODO
  */

@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 
 /**
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2012-10-30
  * @Description: 
  *					任务队列，遵循任务优先级排序 和 FIFO规则

@@ -16,7 +16,7 @@ import java.net.URLDecoder;
 import java.util.regex.Pattern;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/29 下午9:59
  * @Description:  HTTP 文件下载 处理类
  *

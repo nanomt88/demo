@@ -7,7 +7,7 @@ import java.lang.reflect.Proxy;
 /**
  *  黑中介
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-03-10 20:42
  **/
 public class BadAgent implements InvocationHandler{

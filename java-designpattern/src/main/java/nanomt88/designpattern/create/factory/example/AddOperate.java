@@ -1,7 +1,7 @@
 package nanomt88.designpattern.create.factory.example;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/5 上午8:19
  * @Description: //TODO
  */

@@ -19,7 +19,7 @@ import javax.net.ssl.SSLException;
 import java.security.cert.CertificateException;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/29 下午9:45
  * @Description: //TODO
  */

@@ -16,9 +16,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Author: xudong.hong	<br/>
+ * Author: nanomt88	<br/>
  * Date: 2017/3/1 下午4:38	<br/>
- * Email: xudong.hong@lxfintech.com  <br/>
+ * Email: nanomt88@gmail.com  <br/>
  * Description: 实时代扣订单表
  */
 @Repository(value = "OrderPdeductDao")

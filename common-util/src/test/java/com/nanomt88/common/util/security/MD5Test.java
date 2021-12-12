@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-14 22:10
  **/
 public class MD5Test {

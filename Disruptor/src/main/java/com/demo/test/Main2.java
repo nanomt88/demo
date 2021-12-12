@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/14 下午11:10
  * @Description: //TODO
  */

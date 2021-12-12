@@ -3,7 +3,7 @@ package nanomt88.designpattern.proxy;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-03-10 20:27
  **/
 public class House {

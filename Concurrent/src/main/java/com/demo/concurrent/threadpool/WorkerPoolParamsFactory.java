@@ -3,7 +3,7 @@ package com.demo.concurrent.threadpool;
 
 /**
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2013-1-6
  * @Description: 
  *					获取线程池配置参数工厂类

@@ -11,7 +11,7 @@ import io.netty.util.CharsetUtil;
 import java.net.InetSocketAddress;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/29 上午10:59
  * @Description: //TODO
  */

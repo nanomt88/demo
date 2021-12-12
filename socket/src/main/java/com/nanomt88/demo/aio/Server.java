@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.locks.LockSupport;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/15 下午9:37
  * @Description: //TODO
  */

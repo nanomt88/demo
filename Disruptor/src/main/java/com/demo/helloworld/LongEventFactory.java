@@ -3,7 +3,7 @@ package com.demo.helloworld;
 import com.lmax.disruptor.EventFactory;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/9 上午8:50
  * @Description:
  *             需要disruptor创建时间，需要实现EventFactory接口的newInstance接口

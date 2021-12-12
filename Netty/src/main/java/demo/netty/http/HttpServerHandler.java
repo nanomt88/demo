@@ -6,7 +6,7 @@ import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/29 下午9:59
  * @Description: //TODO
  */

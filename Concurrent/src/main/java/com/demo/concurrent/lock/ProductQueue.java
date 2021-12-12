@@ -5,7 +5,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/8 下午9:49
  * @Description:  一个使用 ReentrantLock、Condition 实现的简单FIFO 堵塞队列
  */

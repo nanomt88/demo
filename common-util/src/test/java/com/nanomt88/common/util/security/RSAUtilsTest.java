@@ -9,7 +9,7 @@ import static com.nanomt88.common.util.security.RSAUtils.*;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-25 18:07
  **/
 class RSAUtilsTest {

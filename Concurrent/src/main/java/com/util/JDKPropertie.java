@@ -3,7 +3,7 @@ package com.util;
 import java.util.Properties;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/8 下午11:28
  * @Description: //TODO
  */

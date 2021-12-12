@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Hmac 算法工具类
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-25 15:42
  **/
 public class HmacUtils {

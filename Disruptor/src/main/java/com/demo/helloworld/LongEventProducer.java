@@ -5,7 +5,7 @@ import com.lmax.disruptor.RingBuffer;
 import java.nio.ByteBuffer;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/9 上午8:54
  * @Description:
  *              很明显的是：当用一个简单队列来发布事件的时候会牵涉更多的细节，这是因为事件对象还需要预先创建。

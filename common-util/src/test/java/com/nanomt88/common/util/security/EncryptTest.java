@@ -24,7 +24,7 @@ import java.security.spec.X509EncodedKeySpec;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-10 14:45
  **/
 public class EncryptTest {

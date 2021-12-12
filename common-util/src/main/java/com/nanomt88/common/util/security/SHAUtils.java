@@ -8,7 +8,7 @@ import java.security.SignatureException;
 /**
  * SHA 摘要算法工具类
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-25 15:10
  **/
 public class SHAUtils {

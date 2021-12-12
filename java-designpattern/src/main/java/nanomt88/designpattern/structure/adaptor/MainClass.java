@@ -1,7 +1,7 @@
 package nanomt88.designpattern.structure.adaptor;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/7 上午10:29
  * @Description: //TODO
  */

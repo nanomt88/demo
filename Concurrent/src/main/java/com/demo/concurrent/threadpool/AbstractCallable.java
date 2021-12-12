@@ -2,7 +2,7 @@ package com.demo.concurrent.threadpool;
 
 /**
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2012-11-2
  * @Description: 
  *					实现任务接口，扩展Callable接口

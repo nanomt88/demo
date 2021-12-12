@@ -3,7 +3,7 @@ package com.demo.concurrent.lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/7 下午7:53
  * @Description:  读写锁，读读共享，读写互斥，写写互斥
  */

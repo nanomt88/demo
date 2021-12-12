@@ -3,7 +3,7 @@ package com.nanomt88.common.util.security;
 /**
  * ${DESCRIPTION}
  *
- * @author hongxudong
+ * @author nanomt88@gmail.com
  * @create 2018-04-25 17:30
  **/
 public class Base64 {

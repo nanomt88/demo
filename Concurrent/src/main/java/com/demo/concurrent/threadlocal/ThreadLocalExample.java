@@ -1,7 +1,7 @@
 package com.demo.concurrent.threadlocal;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/2 下午5:38
  * @Description: //TODO
  */

@@ -9,7 +9,7 @@ import java.nio.channels.*;
 import java.util.Iterator;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/15 下午4:13
  * @Description: //TODO
  */

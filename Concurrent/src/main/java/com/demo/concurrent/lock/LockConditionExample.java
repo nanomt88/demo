@@ -1,7 +1,7 @@
 package com.demo.concurrent.lock;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/8 下午9:48
  * @Description: //TODO
  */

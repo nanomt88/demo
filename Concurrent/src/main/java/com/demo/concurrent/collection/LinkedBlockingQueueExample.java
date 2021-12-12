@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/4/6 下午9:33
  * @Description: //TODO
  */

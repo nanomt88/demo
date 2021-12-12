@@ -1,7 +1,7 @@
 package nanomt88.designpattern.action.startegy;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/10/8 上午10:52
  * @Description: //TODO
  */

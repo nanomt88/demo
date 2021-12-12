@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 
 /**
  * @Copyright 		(c) Lictecs
- * @author 			xudong.hong@lictecs.com
+ * @author 			nanomt88@gmail.com
  * @Date 			2012-10-30
  * @Description: 
  *		线程池，默认创建default_queueSize(3)个队列，依次存放

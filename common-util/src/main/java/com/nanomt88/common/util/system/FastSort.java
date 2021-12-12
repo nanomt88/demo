@@ -1,7 +1,7 @@
 package com.nanomt88.common.util.system;
 
 /**
- * @Author: hongxudong@lxfintech.com
+ * @Author: nanomt88@gmail.com
  * @Created: 2017/7/5 下午2:36
  * @Description: //TODO
  */
